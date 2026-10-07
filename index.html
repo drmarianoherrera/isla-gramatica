@@ -1,0 +1,1717 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2447B8">
+<meta name="description" content="Isla Gramática: practica sujeto, predicado, núcleos, objeto directo y objeto indirecto con casos y misiones. Para tercero de primaria.">
+<title>Isla Gramática</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232447B8'/%3E%3Ccircle cx='29' cy='29' r='13' fill='none' stroke='white' stroke-width='5'/%3E%3Cpath d='M39 39l14 14' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F9; --card:#FFFFFF; --ink:#15213A; --muted:#556481; --line:#D6DDEA; --line-2:#E8ECF4;
+  --brand:#2447B8; --brand-ink:#FFFFFF; --brand-soft:#E6ECFB;
+  --s:#2B6CD9; --s-bg:#E3EDFC; --s-ink:#163F86;
+  --p:#C4600A; --p-bg:#FDEBD8; --p-ink:#7A3A00;
+  --od:#0E8A68; --od-bg:#D9F2EA; --od-ink:#085B44;
+  --oi:#6D3FC0; --oi-bg:#EADFF9; --oi-ink:#43237F;
+  --n:#6B7893; --n-bg:#ECEFF4; --n-ink:#35425E;
+  --ok:#1B7A4B; --ok-bg:#DDF3E7; --ok-ink:#0C4D2D;
+  --bad:#B3342A; --bad-bg:#FBE4E1; --bad-ink:#6B1A13;
+  --gold:#E0A100; --gold-ink:#7A5800;
+  --radius:14px;
+  --font:'Lexend',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+svg:not([width]){width:1.25em;height:1.25em;flex:none}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.45;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:3px solid #1B6CFF;outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+#app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+.screen{padding:18px 18px 110px;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Botones */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;width:100%;padding:0 20px;border:0;border-radius:12px;font-weight:600;font-size:18px;text-align:center;transition:transform .08s,background .15s}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--brand);color:#fff}
+.btn.good{background:var(--ok);color:#fff}
+.btn.warn{background:#B45309;color:#fff}
+.btn.secondary{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost{background:transparent;color:var(--brand);min-height:44px;font-size:16px}
+.btn.small{min-height:44px;font-size:16px;width:auto;padding:0 16px}
+.btn:disabled{background:#DCE2EE;color:#7C8AA5;cursor:not-allowed;transform:none;border:0}
+.icon-btn{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.icon-btn svg{width:22px;height:22px}
+.link{background:none;border:0;color:var(--muted);text-decoration:underline;min-height:44px;font-size:15px}
+
+/* Cabecera y chips */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.hello{font-weight:600;font-size:18px;line-height:1.2}
+.levelname{font-size:14px;color:var(--muted)}
+.stats{display:flex;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:600;font-size:15px}
+.pill svg{width:17px;height:17px}
+h1.title{font-size:27px;font-weight:700;line-height:1.15;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:16px;margin-top:4px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:3px 10px;border-radius:8px}
+.tag.t1,.tag.s{background:var(--s-bg);color:var(--s-ink)}
+.tag.t2,.tag.p{background:var(--p-bg);color:var(--p-ink)}
+.tag.t3{background:#FFF1BF;color:var(--gold-ink)}
+.tag.t4,.tag.od{background:var(--od-bg);color:var(--od-ink)}
+.tag.t5,.tag.oi{background:var(--oi-bg);color:var(--oi-ink)}
+.tag.t6{background:#DDE3F2;color:#1B2A4E}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.stack>*+*{margin-top:12px}
+
+/* Bienvenida */
+.welcome{padding-top:48px;text-align:left}
+.logo{width:64px;height:64px;border-radius:18px;background:var(--brand);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.logo svg{width:38px;height:38px}
+.field{display:block;margin-top:18px}
+.field>span{display:block;font-weight:600;font-size:15px;margin-bottom:6px;color:var(--muted)}
+.input{width:100%;min-height:52px;padding:10px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font-size:18px}
+textarea.input{min-height:84px;resize:vertical;line-height:1.4}
+select.input{appearance:auto}
+
+/* Mapa */
+.path{list-style:none;margin:20px 0 0;padding:0;position:relative}
+.node{position:relative;padding-left:56px;padding-bottom:14px}
+.node:before{content:'';position:absolute;left:21px;top:44px;bottom:-4px;width:2px;background:var(--line)}
+.node:last-child:before{display:none}
+.node .num{position:absolute;left:0;top:10px;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;background:#fff;border:2px solid var(--line);color:var(--muted)}
+.node.done .num{background:var(--ok);border-color:var(--ok);color:#fff}
+.node.current .num{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 0 0 5px var(--brand-soft)}
+.node .num svg{width:20px;height:20px}
+.island{width:100%;display:block;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.island:hover{border-color:#B4C0DA}
+.node.current .island{border-color:var(--brand)}
+.island[disabled]{background:#EEF1F6;color:#7C8AA5;cursor:not-allowed}
+.island .nm{font-weight:600;font-size:18px;line-height:1.25}
+.island .meta{display:flex;align-items:center;justify-content:space-between;margin-top:8px;font-size:14px;color:var(--muted)}
+.meter{height:8px;border-radius:4px;background:var(--line-2);overflow:hidden;margin-top:8px}
+.meter>i{display:block;height:100%;background:var(--brand);border-radius:4px;transition:width .4s}
+.node.castle .island{background:#17254A;border-color:#17254A;color:#fff}
+.node.castle .island .meta{color:#B9C6E4}
+.node.castle .island[disabled]{background:#E3E7F0;color:#7C8AA5}
+.stars{display:inline-flex;gap:2px;vertical-align:middle}
+.stars svg{width:18px;height:18px}
+
+/* Isla */
+.back{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.theory{background:var(--brand-soft);border-color:#C5D2F3}
+.theory h2{font-size:15px;font-weight:600;color:var(--brand);text-transform:uppercase;letter-spacing:.04em}
+.theory p{margin-top:6px;font-size:17px}
+.levels{list-style:none;padding:0;margin:16px 0 0}
+.levels li+li{margin-top:10px}
+.lvl{width:100%;display:flex;align-items:center;gap:14px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:12px 14px;min-height:68px}
+.lvl .ln{width:40px;height:40px;border-radius:12px;background:var(--brand-soft);color:var(--brand);font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.lvl .lt{flex:1;font-weight:600;line-height:1.25}
+.lvl .lt small{display:block;font-weight:400;color:var(--muted);font-size:14px}
+.lvl[disabled]{background:#EEF1F6;color:#7C8AA5;cursor:not-allowed}
+.lvl[disabled] .ln{background:#E1E6F0;color:#8B98B2}
+.lvl.next{border-color:var(--brand)}
+
+/* Oración coloreada */
+.sent{font-size:22px;line-height:1.9;font-weight:500}
+.seg{border-radius:8px;padding:3px 8px;margin:0 2px;display:inline;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.c-s{background:var(--s-bg);color:var(--s-ink)}
+.c-p{background:var(--p-bg);color:var(--p-ink)}
+.c-od{background:var(--od-bg);color:var(--od-ink)}
+.c-oi{background:var(--oi-bg);color:var(--oi-ink)}
+.c-n{background:var(--n-bg);color:var(--n-ink)}
+.nuc{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:5px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:10px;font-size:14px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:5px}
+.legend .i-s{background:var(--s)} .legend .i-p{background:var(--p)} .legend .i-od{background:var(--od)} .legend .i-oi{background:var(--oi)} .legend .i-n{background:var(--n)}
+
+/* Libro de casos */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;margin:14px -18px 0;padding-left:18px;padding-right:18px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:15px}
+.tab[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.steps{list-style:none;margin:14px 0 0;padding:0}
+.steps li{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.steps li+li{margin-top:10px}
+.steps .sn{width:30px;height:30px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff;background:var(--n)}
+.steps .sn.s{background:var(--s)} .steps .sn.p{background:var(--p)} .steps .sn.od{background:var(--od)} .steps .sn.oi{background:var(--oi)}
+.steps b{font-weight:600}
+.case-nav{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;margin-top:16px}
+
+/* Jugar */
+.play{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;padding:14px 18px 0;animation:fade .2s ease}
+.play-top{display:flex;align-items:center;gap:12px}
+.bar{flex:1;height:12px;border-radius:6px;background:#DCE3F0;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--brand);border-radius:6px;transition:width .35s}
+.hearts{display:flex;align-items:center;gap:3px;font-weight:600}
+.hearts svg{width:20px;height:20px}
+.play-head{margin-top:16px}
+.prompt{font-size:23px;font-weight:700;line-height:1.25;margin-top:8px;letter-spacing:-.005em}
+.qhost{margin-top:14px;flex:1}
+.sentence{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:22px;line-height:1.45;font-weight:500}
+.claim{margin-top:10px;border-radius:var(--radius);background:#FFF8E1;border:1.5px solid #F0D98A;padding:12px 16px;font-size:20px;font-weight:600}
+.opts{margin-top:12px;display:grid;gap:10px}
+.opts.grid,.opts.row{grid-template-columns:1fr 1fr}
+.opts.stack{grid-template-columns:1fr}
+.opt{min-height:60px;padding:10px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;text-align:left;font-size:19px;font-weight:500;line-height:1.3;display:flex;align-items:center;gap:8px}
+.opts.row .opt{justify-content:center;text-align:center;font-weight:600}
+.opt:hover{border-color:#9FB0D6}
+.opt.sel{border-color:var(--brand);background:var(--brand-soft);box-shadow:inset 0 0 0 1px var(--brand)}
+.opt.ok{border-color:var(--ok);background:var(--ok-bg);color:var(--ok-ink);box-shadow:inset 0 0 0 1px var(--ok)}
+.opt.bad{border-color:var(--bad);background:var(--bad-bg);color:var(--bad-ink);box-shadow:inset 0 0 0 1px var(--bad)}
+.opt.gone{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.opt .mk{width:22px;height:22px;flex:none}
+.toks{display:flex;flex-wrap:wrap;gap:8px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+.tok{min-height:50px;padding:0 13px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-size:21px;font-weight:500}
+.tok:hover{border-color:#9FB0D6}
+.tok.sel{background:var(--brand-soft);border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.tok.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok-ink)}
+.tok.bad{background:var(--bad-bg);border-color:var(--bad);color:var(--bad-ink)}
+.tok.miss{border:2px dashed var(--ok);color:var(--ok-ink)}
+.hint{margin-top:10px;font-size:15px;color:var(--muted)}
+
+/* Arrastrar */
+.zones{display:grid;gap:10px;margin-top:12px}
+.zone{border:2px dashed #B7C3DC;border-radius:var(--radius);padding:10px 12px;min-height:84px;background:#fff;transition:background .15s,border-color .15s}
+.zone.hot{background:var(--brand-soft);border-color:var(--brand)}
+.zone .zl{font-weight:600;font-size:16px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.zone .zl small{font-weight:400;color:var(--muted);font-size:14px}
+.zone.s{border-color:#93B7F0}.zone.p{border-color:#EDB98A}.zone.od{border-color:#85CDB8}.zone.oi{border-color:#BEA5E8}.zone.n{border-color:#BCC4D6}
+.zone.s .zl{color:var(--s-ink)}.zone.p .zl{color:var(--p-ink)}.zone.od .zl{color:var(--od-ink)}.zone.oi .zl{color:var(--oi-ink)}.zone.n .zl{color:var(--n-ink)}
+.zchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;min-height:20px}
+.bank{margin-top:14px;padding:12px;border-radius:var(--radius);background:#E8EDF6;min-height:72px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.bank:empty:after{content:'¡Ya colocaste todas las fichas!';color:var(--muted);font-size:15px}
+.chip{min-height:48px;padding:0 14px;border:1.5px solid #9AA9C6;border-radius:10px;background:#fff;font-size:19px;font-weight:500;box-shadow:0 2px 0 #C5CEE0;touch-action:none;cursor:grab}
+.chip.sel{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft),0 2px 0 var(--brand);background:#F4F7FF}
+.chip.placed{box-shadow:none}
+.chip.in-s{background:var(--s-bg);border-color:var(--s);color:var(--s-ink)}
+.chip.in-p{background:var(--p-bg);border-color:var(--p);color:var(--p-ink)}
+.chip.in-od{background:var(--od-bg);border-color:var(--od);color:var(--od-ink)}
+.chip.in-oi{background:var(--oi-bg);border-color:var(--oi);color:var(--oi-ink)}
+.chip.in-n{background:var(--n-bg);border-color:var(--n);color:var(--n-ink)}
+.chip.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok-ink)}
+.chip.bad{background:var(--bad-bg);border-color:var(--bad);color:var(--bad-ink)}
+.chip.dragging{opacity:.35}
+.dragghost{position:fixed;z-index:999;pointer-events:none;transform:translate(-50%,-60%);background:#fff;border:1.5px solid var(--brand);border-radius:10px;padding:10px 14px;font-size:19px;font-weight:500;box-shadow:0 8px 20px rgba(21,33,58,.25)}
+button.zl{background:none;border:0;padding:0;text-align:left;width:100%;min-height:30px;color:inherit}
+.opt .mk{display:inline-flex}
+.opt .mk svg,.lvl .ln svg{width:22px;height:22px}
+
+/* Unir */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.match .col{display:grid;gap:10px;align-content:start}
+.mbtn{min-height:60px;padding:8px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff;text-align:left;font-size:18px;font-weight:500;line-height:1.25;position:relative}
+.mbtn small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+.mbtn.sel{border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand);background:var(--brand-soft)}
+.mbtn.in-s{background:var(--s-bg);border-color:var(--s);color:var(--s-ink)}
+.mbtn.in-p{background:var(--p-bg);border-color:var(--p);color:var(--p-ink)}
+.mbtn.in-od{background:var(--od-bg);border-color:var(--od);color:var(--od-ink)}
+.mbtn.in-oi{background:var(--oi-bg);border-color:var(--oi);color:var(--oi-ink)}
+.mbtn.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok-ink)}
+.mbtn.bad{background:var(--bad-bg);border-color:var(--bad);color:var(--bad-ink)}
+.mbtn .pair{position:absolute;right:8px;top:6px;font-size:12px;font-weight:700;opacity:.85}
+
+/* Retroalimentación */
+#fb{margin-top:14px}
+.fb{display:flex;gap:12px;border-radius:var(--radius);padding:12px 14px;animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fb svg{width:28px;height:28px;flex:none;margin-top:2px}
+.fb h3{font-size:18px;font-weight:700;line-height:1.25}
+.fb p{font-size:16px;margin-top:2px;line-height:1.4}
+.fb.ok{background:var(--ok-bg);border:1.5px solid var(--ok);color:var(--ok-ink)}
+.fb.bad{background:var(--bad-bg);border:1.5px solid var(--bad);color:var(--bad-ink)}
+.fb.hint{background:#FFF4D6;border:1.5px solid #E5C25A;color:#5C4400}
+.play-foot{position:sticky;bottom:0;margin:14px -18px 0;padding:12px 18px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(to top,var(--bg) 78%,rgba(243,245,249,0))}
+
+/* Resultado */
+.result{text-align:center;padding-top:28px}
+.bigstars{display:flex;justify-content:center;gap:10px;margin:8px 0 6px}
+.bigstars svg{width:62px;height:62px}
+.bigstars svg:nth-child(2){margin-top:-10px}
+.score{font-size:30px;font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 6px}
+.kpi b{display:block;font-size:24px;font-weight:700;line-height:1.1}
+.kpi span{font-size:13px;color:var(--muted)}
+.newb{margin-top:16px;text-align:left}
+.review{text-align:left;margin-top:18px}
+.review h2{font-size:18px;font-weight:700;margin-bottom:8px}
+.rv{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.rv+.rv{margin-top:8px}
+.rv .rs{font-weight:600}
+.rv .rf{font-size:15px;color:var(--muted);margin-top:4px}
+.actions{display:grid;gap:10px;margin-top:20px}
+
+/* Insignias */
+.badges{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.badge{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 12px;text-align:center}
+.badge .bi{width:54px;height:54px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;background:#E3E8F2;color:#8B98B2}
+.badge .bi svg{width:28px;height:28px}
+.badge b{display:block;font-size:15px;font-weight:600;line-height:1.25}
+.badge small{display:block;font-size:13px;color:var(--muted);margin-top:3px;line-height:1.3}
+.badge.on .bi{background:var(--gold);color:#fff}
+.badge.off{opacity:.8}
+
+/* Navegación inferior */
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);background:#fff;border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom);z-index:20}
+.nav button{flex:1;min-height:64px;background:none;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:13px;font-weight:600;color:var(--muted)}
+.nav button svg{width:26px;height:26px}
+.nav button[aria-current=page]{color:var(--brand)}
+
+/* Maestro */
+.sec{margin-top:16px}
+.sec h2{font-size:19px;font-weight:700}
+.sec p.note{font-size:14px;color:var(--muted);margin-top:2px}
+.check{display:flex;gap:12px;align-items:flex-start;min-height:48px;padding:6px 0}
+.check input{width:24px;height:24px;margin-top:2px;flex:none}
+.err{background:var(--bad-bg);color:var(--bad-ink);border-radius:10px;padding:10px 12px;font-size:15px;margin-top:10px}
+.okmsg{background:var(--ok-bg);color:var(--ok-ink);border-radius:10px;padding:10px 12px;font-size:15px;margin-top:10px}
+.clist{list-style:none;margin:10px 0 0;padding:0}
+.clist li{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:15px}
+.clist li+li{margin-top:6px}
+.clist button{min-height:44px;min-width:44px;border:0;background:none;color:var(--bad);font-weight:600}
+
+/* Modal y avisos */
+.overlay{position:fixed;inset:0;background:rgba(21,33,58,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.modal{background:#fff;border-radius:18px;padding:22px;width:min(420px,100%);animation:pop .2s ease}
+.modal h2{font-size:21px;font-weight:700}
+.modal p{color:var(--muted);margin-top:6px}
+.modal .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-size:15px;z-index:60;animation:pop .2s ease}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (min-width:600px){body{background:#E9EDF5}#app{background:var(--bg);box-shadow:0 0 0 1px var(--line)}}
+
+</style>
+</head>
+<body>
+<div id="app"><noscript><p style="padding:24px;font-family:sans-serif">Isla Gramática necesita JavaScript para funcionar. Actívalo en tu navegador e inténtalo de nuevo.</p></noscript></div>
+<script>
+(function () {
+'use strict';
+/* =====================================================================
+   ISLA GRAMÁTICA · NÚCLEO (datos y generadores de preguntas, sin DOM)
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   BANCO DE ORACIONES
+   Formato de cada línea:   Sujeto | núcleo del sujeto | Predicado | objeto directo | objeto indirecto
+   Reglas:
+   - El predicado SIEMPRE empieza con el verbo.
+   - El objeto directo y el indirecto (si hay) deben aparecer tal cual dentro del predicado,
+     primero el directo y después el indirecto. Si no hay, se dejan vacíos.
+   - El núcleo del sujeto debe ser una palabra que aparezca en el sujeto.
+   Para agregar oraciones propias basta con añadir líneas bajo la isla que corresponda.
+   --------------------------------------------------------------------- */
+const BANK_TEXT = `
+# isla 1
+Mi perrito juguetón | perrito | ladra fuerte
+Los niños de tercero | niños | juegan en el patio
+La maestra de español | maestra | llegó temprano a la escuela
+El gato negro | gato | duerme sobre el sillón
+Mis primos pequeños | primos | viven en Puebla
+La luna redonda | luna | brilla en el cielo
+Un pajarito amarillo | pajarito | canta en la ventana
+Las flores del jardín | flores | huelen muy bien
+Mi abuelita | abuelita | camina por el parque
+El autobús escolar | autobús | llega a las ocho
+Los pollitos | pollitos | corren detrás de la gallina
+La lluvia fuerte | lluvia | cae sobre la milpa
+Mi mejor amigo | amigo | vive cerca de mi casa
+Las nubes grises | nubes | viajan con el viento
+El ajolote de Xochimilco | ajolote | nada en el canal
+Mi hermano mayor | hermano | corre por las tardes
+La niña de coletas | niña | salta en el charco
+Los patos blancos | patos | nadan en el lago
+Mi papá | papá | trabaja en una fábrica
+El sol brillante | sol | sale por la mañana
+Las mariposas de colores | mariposas | vuelan sobre las flores
+Un perro callejero | perro | corre por la calle
+La tortuga lenta | tortuga | camina despacio
+Mis compañeros de salón | compañeros | cantan en el festival
+El viento frío | viento | sopla desde la montaña
+Mi tía favorita | tía | vive en Oaxaca
+Los gatitos | gatitos | maúllan de hambre
+La abeja trabajadora | abeja | vuela hacia la flor
+El camión de la basura | camión | pasa temprano
+Mi mamá | mamá | llega del trabajo a las seis
+La rana verde | rana | salta en el estanque
+Dos niñas traviesas | niñas | corren por el pasillo
+El río azul | río | baja desde la sierra
+Las estrellas | estrellas | brillan de noche
+El vecino de enfrente | vecino | trabaja en el tianguis
+El caballo café | caballo | trota por el campo
+Las hormigas pequeñas | hormigas | caminan en fila
+Mi hermanita | hermanita | ríe todo el día
+El tren de carga | tren | pasa por el puente
+Una mariposa blanca | mariposa | descansa en mi hombro
+
+# isla 2
+Los alumnos | alumnos | leen un cuento en voz alta | un cuento
+Mi mamá | mamá | prepara la comida | la comida
+El panadero | panadero | hornea pan todas las mañanas | pan
+Mis amigos | amigos | juegan canicas en el recreo | canicas
+La cocinera | cocinera | corta las verduras | las verduras
+Los jardineros | jardineros | riegan las plantas | las plantas
+El payaso | payaso | baila en la fiesta
+Mi abuelo | abuelo | cuenta historias de su pueblo | historias de su pueblo
+La niña | niña | pinta una mariposa | una mariposa
+Los bomberos | bomberos | apagan el fuego | el fuego
+El cartero | cartero | reparte cartas por la colonia | cartas
+Mi hermana | hermana | toca el piano | el piano
+Los vendedores | vendedores | gritan en el mercado
+El granjero | granjero | recoge los huevos | los huevos
+Las abejas | abejas | fabrican miel | miel
+Mi tío | tío | maneja un camión | un camión
+La señora | señora | compra tortillas en la esquina | tortillas
+Los músicos | músicos | tocan la guitarra | la guitarra
+El niño | niño | construye una torre de cubos | una torre de cubos
+La maestra | maestra | revisa las tareas | las tareas
+Mis papás | papás | pasean por el centro
+El pescador | pescador | lanza la red al mar | la red
+La vaca | vaca | come pasto fresco | pasto fresco
+Los estudiantes | estudiantes | resuelven los problemas | los problemas
+Mi hermano | hermano | lava su bicicleta | su bicicleta
+El doctor | doctor | trabaja en el hospital
+Las niñas | niñas | dibujan flores con crayolas | flores
+El perro | perro | persigue una pelota | una pelota
+Mi papá | papá | repara la bicicleta | la bicicleta
+Los pájaros | pájaros | construyen sus nidos | sus nidos
+La profesora | profesora | escribe palabras en el pizarrón | palabras
+Los vecinos | vecinos | adornan la calle para la posada | la calle
+El cocinero | cocinero | prepara tamales de rajas | tamales de rajas
+Mi prima | prima | lee un libro de aventuras | un libro de aventuras
+El ciclista | ciclista | pedalea muy rápido
+Los obreros | obreros | levantan una pared | una pared
+La enfermera | enfermera | trabaja de noche
+Mi abuela | abuela | teje una bufanda | una bufanda
+Los campesinos | campesinos | siembran maíz en la milpa | maíz
+El científico | científico | observa las estrellas con un telescopio | las estrellas
+
+# isla 3
+Los dos hermanos pequeños de Ana | hermanos | juegan en el parque
+El gran árbol del patio | árbol | da sombra a los niños | sombra | a los niños
+La señora de las flores | señora | vende ramos de rosas | ramos de rosas
+Mi vecino de la esquina | vecino | corta el pasto | el pasto
+Las galletas de chocolate | galletas | huelen delicioso
+El gato gris de mi tía | gato | caza ratones en la bodega | ratones
+Los campeones del torneo | campeones | reciben una medalla | una medalla
+La pequeña tortuga verde | tortuga | camina por la arena
+Mis zapatos nuevos | zapatos | brillan mucho
+El señor del tianguis | señor | vende frutas frescas | frutas frescas
+Las primeras gotas de lluvia | gotas | mojan la banqueta | la banqueta
+La bicicleta roja de mi hermano | bicicleta | está en el garaje
+Los turistas extranjeros | turistas | visitan las pirámides | las pirámides
+Los helados de limón | helados | son muy ricos
+La nueva alumna del salón | alumna | llegó de Monterrey
+El cuaderno azul de matemáticas | cuaderno | está sobre mi mesa
+Mi abuelo querido | abuelo | cuenta chistes | chistes
+Las ranas del estanque | ranas | croan por la noche
+El avión grande | avión | aterriza en la pista
+La directora de la escuela | directora | organiza el festival | el festival
+Los gatos de la vecina | gatos | duermen en el techo
+Una bolsa de dulces | bolsa | cayó al suelo
+El maestro de música | maestro | enseña canciones a los niños | canciones | a los niños
+Mis tres amigas del barrio | amigas | pintan un mural | un mural
+La vieja casona de la esquina | casona | tiene un jardín enorme | un jardín enorme
+Los frijoles de la olla | frijoles | hierven lentamente
+El hijo del panadero | hijo | reparte el pan | el pan
+La estrella más brillante | estrella | aparece al anochecer
+Las manos de mi mamá | manos | preparan tortillas calientes | tortillas calientes
+El libro de cuentos | libro | tiene dibujos de colores | dibujos de colores
+Las hojas secas del árbol | hojas | cubren el patio | el patio
+El equipo de mi escuela | equipo | ganó el partido | el partido
+Los niños del coro | niños | cantan una canción | una canción
+La torre de la iglesia | torre | es muy alta
+El carrito de paletas | carrito | pasa por mi calle
+Las manzanas del cesto | manzanas | están maduras
+La mochila de Pedro | mochila | pesa mucho
+Mi primo mayor | primo | estudia en la secundaria
+Las ovejas del pastor | ovejas | comen pasto | pasto
+El cielo de la tarde | cielo | es naranja
+
+# isla 4
+Mi papá | papá | compró pan en la tienda | pan
+Ana | Ana | dibuja un sol amarillo | un sol amarillo
+Los niños | niños | pintan un mural en el patio | un mural
+Mi mamá | mamá | prepara sopa de fideo | sopa de fideo
+El maestro | maestro | lee un cuento | un cuento
+La abuela | abuela | cose un vestido azul | un vestido azul
+Luis | Luis | come una manzana roja | una manzana roja
+El perro | perro | muerde un hueso | un hueso
+Mi hermano | hermano | patea el balón | el balón
+Las niñas | niñas | recogen flores en el campo | flores
+El cartero | cartero | trae una carta | una carta
+La mamá de Sofía | mamá | lava la ropa | la ropa
+Los pájaros | pájaros | comen semillas | semillas
+El albañil | albañil | construye una casa grande | una casa grande
+Mi tía | tía | hornea un pastel de fresa | un pastel de fresa
+Los alumnos | alumnos | escriben su nombre en el cuaderno | su nombre
+El conejo | conejo | mastica una zanahoria | una zanahoria
+Mis primos | primos | juegan videojuegos en la tarde | videojuegos
+La maestra | maestra | cuelga los dibujos en la pared | los dibujos
+Pedro | Pedro | toca el tambor | el tambor
+El pastor | pastor | cuida las ovejas | las ovejas
+Mi abuelo | abuelo | siembra frijol en el huerto | frijol
+La niña | niña | abraza un osito de peluche | un osito de peluche
+Los obreros | obreros | cargan los ladrillos | los ladrillos
+El mesero | mesero | trae la cuenta | la cuenta
+Mi hermana | hermana | escucha música | música
+El pintor | pintor | pinta la barda de mi casa | la barda de mi casa
+Las hormigas | hormigas | cargan hojas pequeñas | hojas pequeñas
+El niño | niño | rompió el vaso | el vaso
+Mi papá | papá | enciende la estufa | la estufa
+Los vecinos | vecinos | barren la calle | la calle
+La cocinera | cocinera | muele los chiles en el molcajete | los chiles
+Sofía | Sofía | guarda sus juguetes en una caja | sus juguetes
+El bebé | bebé | toma leche tibia | leche tibia
+Mi tío | tío | arregla el motor del coche | el motor del coche
+Los patos | patos | buscan comida en el lago | comida
+La directora | directora | abre la puerta de la escuela | la puerta de la escuela
+Mi amigo | amigo | trae su lonche | su lonche
+El ratón | ratón | roba un pedazo de queso | un pedazo de queso
+Las campesinas | campesinas | cosechan el maíz | el maíz
+
+# isla 5
+Daniela | Daniela | regala un dibujo a su maestra | un dibujo | a su maestra
+Mi papá | papá | compra juguetes para mis hermanos | juguetes | para mis hermanos
+El maestro | maestro | entrega los exámenes a los alumnos | los exámenes | a los alumnos
+Mi abuela | abuela | cuenta un cuento a los nietos | un cuento | a los nietos
+La niña | niña | escribe una carta a su amiga | una carta | a su amiga
+Luis | Luis | presta su lápiz a Mateo | su lápiz | a Mateo
+El cartero | cartero | entrega un paquete a mi vecina | un paquete | a mi vecina
+Mi mamá | mamá | prepara el desayuno para toda la familia | el desayuno | para toda la familia
+La maestra | maestra | da una estrella a cada niño | una estrella | a cada niño
+El mesero | mesero | sirve la sopa a los clientes | la sopa | a los clientes
+Sofía | Sofía | manda un dibujo a su abuelo | un dibujo | a su abuelo
+Los niños | niños | cantan una canción a su maestra | una canción | a su maestra
+Mi tío | tío | trae dulces a sus sobrinos | dulces | a sus sobrinos
+El doctor | doctor | receta una medicina al paciente | una medicina | al paciente
+Mi hermano | hermano | enseña un truco a su perro | un truco | a su perro
+La directora | directora | entrega diplomas a los ganadores | diplomas | a los ganadores
+El vendedor | vendedor | vende paletas a los niños | paletas | a los niños
+Mi mamá | mamá | compra un regalo para mi papá | un regalo | para mi papá
+Carlos | Carlos | lleva una torta a su hermano | una torta | a su hermano
+El abuelo | abuelo | construye una casita para los pájaros | una casita | para los pájaros
+Las niñas | niñas | regalan flores a la maestra | flores | a la maestra
+El panadero | panadero | vende pan a los vecinos | pan | a los vecinos
+Mi papá | papá | lee un cuento a mi hermanita | un cuento | a mi hermanita
+La señora | señora | da agua al perrito | agua | al perrito
+Mi prima | prima | presta su muñeca a mi hermana | su muñeca | a mi hermana
+El cocinero | cocinero | prepara tacos para los invitados | tacos | para los invitados
+Mis papás | papás | dan un premio a mi hermano | un premio | a mi hermano
+La niña | niña | muestra su dibujo a la clase | su dibujo | a la clase
+El jardinero | jardinero | da agua a las plantas | agua | a las plantas
+Mi amigo | amigo | envía un mensaje a su abuela | un mensaje | a su abuela
+La bibliotecaria | bibliotecaria | presta libros a los alumnos | libros | a los alumnos
+El niño | niño | ofrece su asiento a una señora | su asiento | a una señora
+Mi tía | tía | teje un suéter para mi primo | un suéter | para mi primo
+El granjero | granjero | da maíz a las gallinas | maíz | a las gallinas
+Valeria | Valeria | cuenta un secreto a su amiga | un secreto | a su amiga
+El cartero | cartero | reparte periódicos a los vecinos | periódicos | a los vecinos
+Mi abuelito | abuelito | cuenta anécdotas a mi mamá | anécdotas | a mi mamá
+Los vecinos | vecinos | traen tamales para los niños | tamales | para los niños
+La mamá | mamá | hace un pastel para su hija | un pastel | para su hija
+El maestro | maestro | explica la lección a sus alumnos | la lección | a sus alumnos
+
+# ejemplos S
+Los pajaritos del árbol | pajaritos | cantan al amanecer
+La niña de trenzas | niña | juega en el parque
+El tren de la ciudad | tren | llega a las tres
+
+# ejemplos P
+Mi abuelita | abuelita | cocina frijoles en una olla grande | frijoles
+Los niños | niños | corren por el patio
+El gato | gato | duerme todo el día
+
+# ejemplos N
+Las flores amarillas del jardín | flores | crecen muy rápido
+El perro de mi vecino | perro | ladra por la noche
+Mi hermana mayor | hermana | pinta un paisaje | un paisaje
+
+# ejemplos OD
+Luis | Luis | come una torta de jamón | una torta de jamón
+La maestra | maestra | borra el pizarrón | el pizarrón
+Los niños | niños | recogen la basura del patio | la basura del patio
+
+# ejemplos OI
+Ana | Ana | regala una flor a su mamá | una flor | a su mamá
+El papá de Luis | papá | compra un helado para su hijo | un helado | para su hijo
+La abuela | abuela | cuenta un cuento a sus nietos | un cuento | a sus nietos
+
+# ejemplos T
+La niña | niña | lleva flores a su abuelita | flores | a su abuelita
+Mi tío | tío | prepara café para la familia | café | para la familia
+El maestro | maestro | entrega los libros a los alumnos | los libros | a los alumnos
+`;
+
+/* ---------------------------------------------------------------------
+   TEMAS (islas)
+   --------------------------------------------------------------------- */
+const TOPICS = {
+  1: { id: 1, name: 'Isla del Sujeto', short: 'Sujeto', key: 'S',
+       theory: 'El sujeto es de quien se habla en la oración. Para encontrarlo pregunta: ¿quién? o ¿de quién se habla?',
+       tip: 'Mira la oración de ejemplo: «Los niños» es el sujeto porque la oración habla de ellos.' },
+  2: { id: 2, name: 'Isla del Predicado', short: 'Predicado', key: 'P',
+       theory: 'El predicado dice lo que hace el sujeto o cómo es. Es todo lo que queda cuando quitas el sujeto.',
+       tip: 'Pregunta: ¿qué se dice del sujeto? Todo eso es el predicado.' },
+  3: { id: 3, name: 'Isla de los Núcleos', short: 'Núcleos', key: 'N',
+       theory: 'El núcleo del sujeto es su palabra más importante (la que no se puede quitar). El núcleo del predicado es el verbo: dice la acción.',
+       tip: 'En «Mi perrito juguetón ladra fuerte»: el núcleo del sujeto es «perrito» y el núcleo del predicado es «ladra».' },
+  4: { id: 4, name: 'Isla del Objeto Directo', short: 'Objeto directo', key: 'OD',
+       theory: 'El objeto directo es lo que recibe la acción del verbo. Pregúntale al verbo: ¿qué?',
+       tip: 'Mi papá compró pan: ¿qué compró? pan. Entonces «pan» es el objeto directo.' },
+  5: { id: 5, name: 'Isla del Objeto Indirecto', short: 'Objeto indirecto', key: 'OI',
+       theory: 'El objeto indirecto es quien recibe el beneficio de la acción. Pregunta: ¿a quién? o ¿para quién?',
+       tip: 'Ana regala una flor a su mamá: ¿a quién regala? a su mamá. Entonces «a su mamá» es el objeto indirecto.' }
+};
+const LEVEL_NAMES = ['Calentamiento', 'Primeras pistas', 'Investigación', 'Caso difícil', 'Gran caso'];
+const QUESTIONS_PER_LEVEL = 8;
+const HEARTS = 5;
+
+/* ---------------------------------------------------------------------
+   UTILIDADES
+   --------------------------------------------------------------------- */
+const rnd = Math.random;
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rnd() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function pick(arr) { return arr[Math.floor(rnd() * arr.length)]; }
+function lc(s) { return s.toLowerCase(); }
+function distinctBy(arr, exclude) {
+  const seen = new Set(exclude ? [lc(exclude)] : []);
+  const out = [];
+  arr.forEach(x => {
+    if (!x) return;
+    const k = lc(x);
+    if (seen.has(k)) return;
+    seen.add(k);
+    out.push(x);
+  });
+  return out;
+}
+const q = t => '«' + t + '»';
+
+/* ---------------------------------------------------------------------
+   ANÁLISIS DE UNA ORACIÓN
+   --------------------------------------------------------------------- */
+function buildSentence(row) {
+  const S = (row.S || '').trim(), NS = (row.NS || '').trim(), P = (row.P || '').trim();
+  const OD = (row.OD || '').trim(), OI = (row.OI || '').trim();
+  const errs = [];
+  if (!S) errs.push('Falta el sujeto.');
+  if (!P) errs.push('Falta el predicado.');
+  if (!NS) errs.push('Falta el núcleo del sujeto.');
+  if (errs.length) return { errs };
+  const text = S + ' ' + P + '.';
+  const sLen = S.length, pStart = sLen + 1;
+  const V = P.split(/\s+/)[0];
+  const vEnd = pStart + V.length;
+  const tokens = [];
+  const re = /\S+/g; let m;
+  while ((m = re.exec(text))) {
+    tokens.push({ i: tokens.length, raw: m[0], word: m[0].replace(/[.,;:!?¡¿«»"]/g, ''),
+                  start: m.index, end: m.index + m[0].length, role: 'X' });
+  }
+  tokens.forEach(t => { t.role = t.start < sLen ? 'S' : 'X'; });
+  const setRole = (a, b, r) => tokens.forEach(t => { if (t.start >= a && t.start < b) t.role = r; });
+  setRole(pStart, vEnd, 'V');
+  const okBoundary = (a, len) => (a === pStart || text[a - 1] === ' ') && (text[a + len] === ' ' || text[a + len] === '.');
+  let odA = -1;
+  if (OD) {
+    odA = text.indexOf(OD, vEnd);
+    if (odA < 0) errs.push('El objeto directo debe aparecer escrito igual dentro del predicado.');
+    else if (!okBoundary(odA, OD.length)) errs.push('El objeto directo debe ser una o más palabras completas.');
+    else setRole(odA, odA + OD.length, 'OD');
+  }
+  if (OI) {
+    if (!OD) errs.push('Para poner objeto indirecto debe haber también objeto directo.');
+    else if (odA >= 0) {
+      const oiA = text.indexOf(OI, odA + OD.length);
+      if (oiA < 0) errs.push('El objeto indirecto debe aparecer después del objeto directo.');
+      else if (!okBoundary(oiA, OI.length)) errs.push('El objeto indirecto debe ser una o más palabras completas.');
+      else setRole(oiA, oiA + OI.length, 'OI');
+    }
+  }
+  const nsTok = tokens.find(t => t.role === 'S' && lc(t.word) === lc(NS));
+  if (!nsTok) errs.push('El núcleo del sujeto debe ser una palabra del sujeto.');
+  const vTok = tokens.find(t => t.role === 'V');
+  if (!vTok) errs.push('No se encontró el verbo.');
+  if (new Set(tokens.map(t => lc(t.word))).size < 4) errs.push('La oración es muy corta (mínimo 4 palabras distintas).');
+  const chunks = [];
+  tokens.forEach(t => {
+    const last = chunks[chunks.length - 1];
+    if (last && last.role === t.role) last.last = t; else chunks.push({ role: t.role, first: t, last: t });
+  });
+  chunks.forEach((c, k) => { c.id = 'c' + k; c.text = text.slice(c.first.start, c.last.end).replace(/\.$/, ''); });
+  return { S, NS, P, V, OD, OI, text, tokens, chunks, errs,
+           nsIdx: nsTok ? nsTok.i : -1, vIdx: vTok ? vTok.i : -1, key: S + '|' + P };
+}
+
+function parseBank(text) {
+  const pools = { 1: [], 2: [], 3: [], 4: [], 5: [] };
+  const examples = { S: [], P: [], N: [], OD: [], OI: [], T: [] };
+  const problems = [];
+  let target = null;
+  text.split('\n').forEach((raw, ln) => {
+    const line = raw.trim();
+    if (!line) return;
+    if (line[0] === '#') {
+      const h = line.slice(1).trim().split(/\s+/);
+      target = h[0] === 'isla' ? { kind: 'isla', k: Number(h[1]) } : { kind: 'ej', k: h[1] };
+      return;
+    }
+    const f = line.split('|').map(s => s.trim());
+    const s = buildSentence({ S: f[0], NS: f[1], P: f[2], OD: f[3], OI: f[4] });
+    if (s.errs.length) { problems.push('Línea ' + (ln + 1) + ' (' + line + '): ' + s.errs.join(' ')); return; }
+    if (target.kind === 'isla') pools[target.k].push(s); else examples[target.k].push(s);
+  });
+  return { pools, examples, problems };
+}
+
+const PARSED = parseBank(BANK_TEXT);
+const POOLS = { 1: PARSED.pools[1].slice(), 2: PARSED.pools[2].slice(), 3: PARSED.pools[3].slice(),
+                4: PARSED.pools[4].slice(), 5: PARSED.pools[5].slice() };
+const EXAMPLES = PARSED.examples;
+
+/* Oraciones propias del maestro: se agregan a las islas que correspondan */
+function setCustom(list) {
+  for (let i = 1; i <= 5; i++) POOLS[i] = PARSED.pools[i].slice();
+  (list || []).forEach(row => {
+    const s = buildSentence(row);
+    if (s.errs.length) return;
+    s.custom = true;
+    if (s.OI) POOLS[5].push(s);
+    else if (s.OD) POOLS[4].push(s);
+    else { POOLS[1].push(s); POOLS[2].push(s); POOLS[3].push(s); }
+  });
+}
+
+/* ---------------------------------------------------------------------
+   SELECCIÓN SIN REPETIR
+   --------------------------------------------------------------------- */
+function pickSentences(pool, n, seen) {
+  const unseen = pool.filter(s => !seen.includes(s.key));
+  let chosen = shuffle(unseen).slice(0, n);
+  if (chosen.length < n) {
+    seen.length = 0;
+    chosen.forEach(s => seen.push(s.key));
+    const rest = shuffle(pool.filter(s => !chosen.includes(s))).slice(0, n - chosen.length);
+    chosen = chosen.concat(rest);
+  }
+  chosen.forEach(s => { if (!seen.includes(s.key)) seen.push(s.key); });
+  return chosen;
+}
+
+/* ---------------------------------------------------------------------
+   TEXTOS DE APOYO (explicaciones)
+   --------------------------------------------------------------------- */
+function lowerFirst(t) { return t.charAt(0).toLowerCase() + t.slice(1); }
+function odFact(s) { return 'El objeto directo es ' + q(s.OD) + ': ¿qué ' + lowerFirst(s.V) + '? ' + s.OD + '.'; }
+function oiFact(s) {
+  const pre = /^para\b/i.test(s.OI) ? 'Para' : 'A';
+  return 'El objeto indirecto es ' + q(s.OI) + ': ¿' + lc(pre) + ' quién ' + lowerFirst(s.V) + '? ' + s.OI + '.';
+}
+function factAsk(ask, s) {
+  switch (ask) {
+    case 'S': return 'El sujeto es ' + q(s.S) + '. Es de quien se habla en la oración.';
+    case 'P': return 'El predicado es ' + q(s.P) + '. Dice lo que hace el sujeto.';
+    case 'NS': return 'El núcleo del sujeto es ' + q(s.NS) + ': es la palabra más importante de ' + q(s.S) + '.';
+    case 'NP': return 'El núcleo del predicado es el verbo ' + q(s.V) + ': dice la acción.';
+    case 'OD': return odFact(s);
+    case 'OI': return oiFact(s);
+  }
+  return '';
+}
+function factTopic(topic, s) {
+  if (topic <= 2) return 'El sujeto es ' + q(s.S) + ' y el predicado es ' + q(s.P) + '.';
+  if (topic === 3) return 'El núcleo del sujeto es ' + q(s.NS) + ' y el núcleo del predicado es el verbo ' + q(s.V) + '.';
+  if (topic === 4) return odFact(s);
+  return odFact(s) + ' ' + oiFact(s);
+}
+function pickAsk(topic) {
+  if (topic === 1) return rnd() < 0.6 ? 'S' : 'P';
+  if (topic === 2) return rnd() < 0.7 ? 'P' : 'S';
+  if (topic === 3) return rnd() < 0.5 ? 'NS' : 'NP';
+  if (topic === 4) return 'OD';
+  return 'OI';
+}
+
+/* ---------------------------------------------------------------------
+   GENERADORES DE PREGUNTAS
+   --------------------------------------------------------------------- */
+const ASK_PROMPT = {
+  S: '¿Cuál es el sujeto de la oración?',
+  P: '¿Cuál es el predicado completo?',
+  NS: '¿Cuál es el núcleo del sujeto?',
+  NP: '¿Cuál es el núcleo del predicado?',
+  OD: '¿Cuál es el objeto directo?',
+  OI: '¿Cuál es el objeto indirecto?'
+};
+const TAP_PROMPT = {
+  S: 'Toca todas las palabras del sujeto.',
+  P: 'Toca todas las palabras del predicado.',
+  NS: 'Toca el núcleo del sujeto.',
+  NP: 'Toca el núcleo del predicado.',
+  OD: 'Toca las palabras del objeto directo.',
+  OI: 'Toca las palabras del objeto indirecto.'
+};
+function wordsBy(s, fn) { return s.tokens.filter(fn).map(t => t.word); }
+function chunkTexts(s, role) { return s.chunks.filter(c => c.role === role).map(c => c.text); }
+
+function qChoice(topic, s) {
+  const ask = pickAsk(topic);
+  const xs = chunkTexts(s, 'X');
+  const sWords = wordsBy(s, t => t.role === 'S' && t.i !== s.nsIdx);
+  const pWords = wordsBy(s, t => t.role !== 'S' && t.i !== s.vIdx);
+  let correct, pool;
+  if (ask === 'S') { correct = s.S; pool = [s.P, s.V, s.OD, s.OI].concat(xs); }
+  else if (ask === 'P') { correct = s.P; pool = [s.S, s.NS, s.V, s.OD, s.OI].concat(xs); }
+  else if (ask === 'NS') {
+    correct = s.NS;
+    pool = shuffle(distinctBy(sWords, s.NS)).slice(0, 2).concat([s.V], shuffle(pWords));
+  } else if (ask === 'NP') {
+    correct = s.V;
+    pool = [s.NS].concat(shuffle(sWords).slice(0, 1), shuffle(pWords));
+  } else if (ask === 'OD') { correct = s.OD; pool = [s.S, s.V, s.OI, s.NS].concat(xs); }
+  else { correct = s.OI; pool = [s.OD, s.S, s.V, s.NS].concat(xs); }
+  let wrongs = distinctBy(pool, correct);
+  if (ask !== 'NS' && ask !== 'NP') wrongs = shuffle(wrongs);
+  wrongs = distinctBy(wrongs.concat(shuffle(distinctBy(s.tokens.map(t => t.word), correct))), correct).slice(0, 3);
+  const options = shuffle([correct].concat(wrongs));
+  return { type: 'choice', layout: 'grid', topic, s, ask, prompt: ASK_PROMPT[ask],
+           options, correct: options.indexOf(correct), fact: factAsk(ask, s) };
+}
+
+function qTap(topic, s) {
+  const ask = pickAsk(topic);
+  let set;
+  if (ask === 'S') set = s.tokens.filter(t => t.role === 'S').map(t => t.i);
+  else if (ask === 'P') set = s.tokens.filter(t => t.role !== 'S').map(t => t.i);
+  else if (ask === 'NS') set = [s.nsIdx];
+  else if (ask === 'NP') set = [s.vIdx];
+  else if (ask === 'OD') set = s.tokens.filter(t => t.role === 'OD').map(t => t.i);
+  else set = s.tokens.filter(t => t.role === 'OI').map(t => t.i);
+  return { type: 'tap', topic, s, ask, prompt: TAP_PROMPT[ask], target: set,
+           single: ask === 'NS' || ask === 'NP', fact: factAsk(ask, s) };
+}
+
+function claimPool(topic, s) {
+  const xs = chunkTexts(s, 'X');
+  let T = [], F = [];
+  if (topic <= 2) {
+    T = [q(s.S) + ' es el sujeto.', q(s.P) + ' es el predicado.'];
+    F = [q(s.P) + ' es el sujeto.', q(s.S) + ' es el predicado.'];
+  } else if (topic === 3) {
+    const sw = wordsBy(s, t => t.role === 'S' && t.i !== s.nsIdx);
+    const pw = wordsBy(s, t => t.role !== 'S' && t.i !== s.vIdx);
+    T = [q(s.NS) + ' es el núcleo del sujeto.', q(s.V) + ' es el núcleo del predicado.'];
+    F = [q(s.V) + ' es el núcleo del sujeto.', q(s.NS) + ' es el núcleo del predicado.'];
+    sw.forEach(w => F.push(q(w) + ' es el núcleo del sujeto.'));
+    pw.forEach(w => F.push(q(w) + ' es el núcleo del predicado.'));
+  } else if (topic === 4) {
+    T = [q(s.OD) + ' es el objeto directo.', q(s.S) + ' es el sujeto.'];
+    F = [q(s.S) + ' es el objeto directo.', q(s.V) + ' es el objeto directo.', q(s.OD) + ' es el sujeto.'];
+    xs.forEach(x => F.push(q(x) + ' es el objeto directo.'));
+    if (s.OI) F.push(q(s.OI) + ' es el objeto directo.');
+  } else {
+    T = [q(s.OI) + ' es el objeto indirecto.', q(s.OD) + ' es el objeto directo.'];
+    F = [q(s.OD) + ' es el objeto indirecto.', q(s.OI) + ' es el objeto directo.', q(s.S) + ' es el objeto indirecto.'];
+    xs.forEach(x => F.push(q(x) + ' es el objeto indirecto.'));
+  }
+  return { T, F };
+}
+
+function qTF(topic, s) {
+  const { T, F } = claimPool(topic, s);
+  const truth = rnd() < 0.5;
+  const claim = truth ? pick(T) : pick(F);
+  return { type: 'tf', layout: 'row', topic, s, prompt: 'Lee la oración. ¿La afirmación es verdadera o falsa?',
+           claim, options: ['Verdadero', 'Falso'], correct: truth ? 0 : 1, fact: factTopic(topic, s) };
+}
+
+function qError(topic, s) {
+  const { T, F } = claimPool(topic, s);
+  const trues = shuffle(T).slice(0, 2);
+  const bad = pick(F);
+  const options = shuffle(trues.concat([bad]));
+  return { type: 'error', layout: 'stack', topic, s, prompt: 'Hay una afirmación falsa. ¿Cuál es?',
+           options, correct: options.indexOf(bad), fact: factTopic(topic, s) };
+}
+
+const BOX_META = {
+  S:  { label: 'Sujeto', sub: '¿de quién se habla?', color: 's' },
+  P:  { label: 'Predicado', sub: '¿qué se dice de él?', color: 'p' },
+  V:  { label: 'Verbo', sub: 'la acción', color: 'p' },
+  OD: { label: 'Objeto directo', sub: '¿qué?', color: 'od' },
+  OI: { label: 'Objeto indirecto', sub: '¿a quién? ¿para quién?', color: 'oi' },
+  X:  { label: 'Otra parte', sub: 'lugar, tiempo, modo…', color: 'n' },
+  NS: { label: 'Núcleo del sujeto', sub: 'palabra principal', color: 's' },
+  NP: { label: 'Núcleo del predicado', sub: 'el verbo', color: 'p' },
+  NO: { label: 'No es núcleo', sub: 'las demás', color: 'n' }
+};
+
+function qDrag(topic, s, lvl) {
+  let chips = [], order;
+  if (topic <= 2) {
+    if (topic === 1 && (lvl || 1) <= 2) {
+      chips = [{ id: 'a0', text: s.S, cat: 'S' }, { id: 'a1', text: s.P, cat: 'P' }];
+    } else {
+      chips = s.chunks.map(c => ({ id: c.id, text: c.text, cat: c.role === 'S' ? 'S' : 'P' }));
+    }
+    order = ['S', 'P'];
+  } else if (topic === 3) {
+    const sw = distinctBy(wordsBy(s, t => t.role === 'S' && t.i !== s.nsIdx), s.NS);
+    const pw = distinctBy(wordsBy(s, t => t.role !== 'S' && t.i !== s.vIdx), s.V);
+    const dis = [];
+    if (sw.length) dis.push(pick(sw));
+    if (pw.length) dis.push(pick(pw));
+    if (dis.length < 2) {
+      const more = distinctBy(shuffle(sw.concat(pw)), '').filter(w => !dis.includes(w));
+      if (more.length && dis.length < 2) dis.push(more[0]);
+    }
+    chips = [{ id: 'n0', text: s.NS, cat: 'NS' }, { id: 'n1', text: s.V, cat: 'NP' }]
+      .concat(dis.map((w, i) => ({ id: 'n' + (i + 2), text: w, cat: 'NO' })));
+    order = ['NS', 'NP', 'NO'];
+  } else {
+    chips = s.chunks.map(c => {
+      let cat = c.role;
+      if (cat === 'OI' && topic === 4) cat = 'X';
+      return { id: c.id, text: c.text, cat };
+    });
+    order = ['S', 'V', 'OD', 'OI', 'X'];
+  }
+  const present = new Set(chips.map(c => c.cat));
+  const boxes = order.filter(k => present.has(k)).map(k => Object.assign({ key: k }, BOX_META[k]));
+  let summary;
+  if (topic <= 2) summary = 'Sujeto: ' + q(s.S) + ' · Predicado: ' + q(s.P) + '.';
+  else summary = boxes.map(b => b.label + ': ' + chips.filter(c => c.cat === b.key).map(c => q(c.text)).join(' ')).join(' · ') + '.';
+  return { type: 'drag', topic, s, prompt: topic === 3 ? 'Arrastra cada palabra a su caja.' : 'Arrastra cada parte a su caja.',
+           chips: shuffle(chips), boxes, fact: summary };
+}
+
+function qMatch(topic, s) {
+  const keys = ['S', 'V', 'OD'].concat(s.OI && topic === 5 ? ['OI'] : []);
+  const labels = keys.map(k => Object.assign({ key: k }, BOX_META[k]));
+  const items = keys.map(k => { const c = s.chunks.find(c => c.role === k); return { id: 'm' + k, text: c.text, cat: k }; });
+  const summary = labels.map(l => l.label + ': ' + q(items.find(i => i.cat === l.key).text)).join(' · ') + '.';
+  return { type: 'match', topic, s, prompt: 'Une cada nombre con su parte de la oración.',
+           labels, items: shuffle(items), fact: summary };
+}
+
+function makeQuestion(type, topic, s, lvl) {
+  if (type === 'match' && topic < 4) type = 'drag';
+  if (type === 'match' && topic === 5 && !s.OI) type = 'drag';
+  switch (type) {
+    case 'choice': return qChoice(topic, s);
+    case 'tap': return qTap(topic, s);
+    case 'tf': return qTF(topic, s);
+    case 'error': return qError(topic, s);
+    case 'drag': return qDrag(topic, s, lvl);
+    case 'match': return qMatch(topic, s);
+  }
+  return qChoice(topic, s);
+}
+
+const RECIPES = [
+  ['choice', 'tf', 'tap', 'choice', 'tf', 'tap', 'choice', 'tf'],
+  ['tap', 'choice', 'tf', 'drag', 'choice', 'tap', 'tf', 'drag'],
+  ['drag', 'error', 'choice', 'tap', 'tf', 'drag', 'error', 'choice'],
+  ['error', 'drag', 'match', 'tap', 'choice', 'error', 'drag', 'tf'],
+  ['drag', 'error', 'match', 'drag', 'tap', 'error', 'tf', 'match']
+];
+
+function levelQuestions(topic, level, seenArr) {
+  const recipe = RECIPES[level - 1];
+  const sents = pickSentences(POOLS[topic], recipe.length, seenArr);
+  return recipe.map((t, i) => makeQuestion(t, topic, sents[i], level));
+}
+
+function examQuestions(count, seenByTopic) {
+  const order = [];
+  while (order.length < count) shuffle([1, 2, 3, 4, 5]).forEach(t => { if (order.length < count) order.push(t); });
+  const usedNow = new Set();
+  const res = order.map(topic => {
+    const seen = seenByTopic[topic];
+    let s, tries = 0;
+    do { s = pickSentences(POOLS[topic], 1, seen)[0]; tries++; } while (usedNow.has(s.key) && tries < 6);
+    usedNow.add(s.key);
+    const types = ['choice', 'tap', 'tf', 'drag', 'error'].concat(topic >= 4 ? ['match'] : []);
+    return makeQuestion(pick(types), topic, s, 5);
+  });
+  return shuffle(res);
+}
+
+/* Validación de una oración escrita por el maestro */
+function validateRow(row) {
+  const s = buildSentence(row);
+  return { ok: !s.errs.length, errs: s.errs, s };
+}
+
+const Core = { TOPICS, LEVEL_NAMES, QUESTIONS_PER_LEVEL, HEARTS, POOLS, EXAMPLES, PARSED, BOX_META,
+  buildSentence, setCustom, levelQuestions, examQuestions, makeQuestion, validateRow, shuffle, pick,
+  factTopic, factAsk };
+if (typeof module !== 'undefined' && module.exports) module.exports = Core;
+
+/* =====================================================================
+   ISLA GRAMÁTICA · APLICACIÓN (pantallas, ejercicios, progreso)
+   ===================================================================== */
+const $ = (s, r) => (r || document).querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const app = document.getElementById('app');
+const T = Core.TOPICS;
+
+/* ---------- Iconos ---------- */
+const svg = p => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
+const PATHS = {
+  search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/>',
+  map: '<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
+  book: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/>',
+  medal: '<circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/>',
+  castle: '<path d="M4 21V8h3v2h2V8h6v2h2V8h3v13z"/><path d="M10 21v-5a2 2 0 0 1 4 0v5"/>',
+  sliders: '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',
+  back: '<path d="M15 5l-7 7 7 7"/>',
+  close: '<path d="M5 5l14 14M19 5L5 19"/>',
+  lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  check: '<path d="M5 12.5l4.5 4.5L19 7"/>',
+  bulb: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.7.6 1 1.3 1 2.1h5c0-.8.3-1.5 1-2.1A6 6 0 0 0 12 3z"/>',
+  okc: '<circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.5l3 3 6-6.5"/>',
+  badc: '<circle cx="12" cy="12" r="9.5"/><path d="M12 7v6M12 16.5v.5"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  bolt: '<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
+  target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/>',
+  arrow: '<path d="M4 12h14M13 6l6 6-6 6"/>',
+  trophy: '<path d="M8 4h8v5a4 4 0 0 1-8 0zM5 5h3M16 5h3M12 13v4M8 21h8M9 17h6"/>',
+  starline: '<path d="M12 2l3 6.5 7 .9-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.9z"/>',
+  flameline: '<path d="M12 2c1 4 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-6 1-9z"/>'
+};
+const I = {};
+Object.keys(PATHS).forEach(k => { I[k] = svg(PATHS[k]); });
+const star = (on, size) => '<svg viewBox="0 0 24 24" aria-hidden="true"' + (size ? ' width="' + size + '" height="' + size + '"' : '') + ' fill="' + (on ? '#E0A100' : '#fff') + '" stroke="' + (on ? '#A87800' : '#B4C0D6') + '" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l3 6.5 7 .9-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.9z"/></svg>';
+const flame = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="#E0701B" stroke="#B4500A" stroke-width="1.4" stroke-linejoin="round"><path d="M12 2c1 4 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-6 1-9z"/></svg>';
+const heart = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="#D1453B" stroke="#8E2820" stroke-width="1.4" stroke-linejoin="round"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg>';
+const starsRow = n => '<span class="stars" role="img" aria-label="' + n + ' de 3 estrellas">' + [1, 2, 3].map(i => star(i <= n)).join('') + '</span>';
+
+/* ---------- Almacenamiento ---------- */
+const KEY_P = 'isla-gramatica:progreso:v1', KEY_C = 'isla-gramatica:config:v1', KEY_U = 'isla-gramatica:propias:v1';
+const mem = {};
+const canStore = (() => { try { localStorage.setItem('__t', '1'); localStorage.removeItem('__t'); return true; } catch (e) { return false; } })();
+const store = {
+  get(k, d) { try { const raw = canStore ? localStorage.getItem(k) : mem[k]; return raw ? JSON.parse(raw) : d; } catch (e) { return d; } },
+  set(k, v) { const raw = JSON.stringify(v); if (canStore) { try { localStorage.setItem(k, raw); return; } catch (e) { /* cae a memoria */ } } mem[k] = raw; },
+  del(k) { if (canStore) { try { localStorage.removeItem(k); } catch (e) { /* nada */ } } delete mem[k]; }
+};
+
+const DEFAULT_MSGS = {
+  1: { ok: '¡Muy bien! Separaste bien el sujeto y el predicado.', bad: 'Pista: el sujeto es de quien se habla (pregunta ¿de quién se habla?). El predicado es todo lo que se dice de él.' },
+  2: { ok: '¡Correcto! Identificaste bien el predicado.', bad: 'Pista: el predicado es todo lo que se dice del sujeto. Quita el sujeto y lo que queda es el predicado.' },
+  3: { ok: '¡Excelente! Encontraste la palabra más importante.', bad: 'Pista: el núcleo del sujeto es la palabra principal (un sustantivo). El núcleo del predicado es el verbo, la acción.' },
+  4: { ok: '¡Bien hecho! Eso es lo que recibe la acción del verbo.', bad: 'Pista: pregúntale al verbo ¿qué? Por ejemplo: «compró pan» → ¿qué compró? pan.' },
+  5: { ok: '¡Muy bien! Esa parte dice a quién o para quién es la acción.', bad: 'Pista: después del verbo pregunta ¿a quién? o ¿para quién? Esa respuesta es el objeto indirecto.' }
+};
+const defaultProgress = () => ({
+  name: '', levels: {}, badges: {},
+  seen: { 1: [], 2: [], 3: [], 4: [], 5: [] }, seenExam: { 1: [], 2: [], 3: [], 4: [], 5: [] },
+  exam: { attempts: 0, bestRatio: 0, bestStars: 0, bestText: '' },
+  totals: { correct: 0, answered: 0 }, streak: { count: 0, last: '' }
+});
+const defaultConfig = () => ({ pin: '2468', examCount: 10, examFeedback: false, unlockAll: false, msgs: JSON.parse(JSON.stringify(DEFAULT_MSGS)) });
+function merged(def, saved) {
+  const out = def;
+  if (saved && typeof saved === 'object') Object.keys(saved).forEach(k => {
+    if (def[k] && typeof def[k] === 'object' && !Array.isArray(def[k])) out[k] = merged(def[k], saved[k]);
+    else out[k] = saved[k];
+  });
+  return out;
+}
+let P = merged(defaultProgress(), store.get(KEY_P, null));
+let C = merged(defaultConfig(), store.get(KEY_C, null));
+let CUSTOM = store.get(KEY_U, []);
+Core.setCustom(CUSTOM);
+const saveP = () => store.set(KEY_P, P);
+const saveC = () => store.set(KEY_C, C);
+
+/* ---------- Avance ---------- */
+const lvKey = (i, l) => i + '-' + l;
+const lvStars = (i, l) => (P.levels[lvKey(i, l)] || {}).stars || 0;
+const levelDone = (i, l) => lvStars(i, l) > 0;
+const islandDoneCount = i => [1, 2, 3, 4, 5].filter(l => levelDone(i, l)).length;
+const islandDone = i => islandDoneCount(i) === 5;
+const islandStars = i => [1, 2, 3, 4, 5].reduce((a, l) => a + lvStars(i, l), 0);
+const islandUnlocked = i => C.unlockAll || i === 1 || islandDone(i - 1);
+const levelUnlocked = (i, l) => C.unlockAll || (islandUnlocked(i) && (l === 1 || levelDone(i, l - 1)));
+const examUnlocked = () => C.unlockAll || [1, 2, 3, 4, 5].every(islandDone);
+const totalStars = () => Object.keys(P.levels).reduce((a, k) => a + (P.levels[k].stars || 0), 0) + (P.exam.bestStars || 0);
+const RANKS = ['Aprendiz', 'Explorador', 'Detective', 'Experto', 'Maestro'];
+const rankIdx = () => Math.min(4, Math.floor(totalStars() / 16));
+const levelLabel = () => 'Nivel ' + (1 + Math.floor(totalStars() / 10)) + ' · ' + RANKS[rankIdx()];
+const dstr = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+const todayStr = () => dstr(new Date());
+const yesterdayStr = () => { const d = new Date(); d.setDate(d.getDate() - 1); return dstr(d); };
+const currentStreak = () => (P.streak.last === todayStr() || P.streak.last === yesterdayStr()) ? P.streak.count : 0;
+function touchStreak() {
+  const t = todayStr();
+  if (P.streak.last === t) return;
+  P.streak.count = (P.streak.last === yesterdayStr() ? P.streak.count : 0) + 1;
+  P.streak.last = t;
+}
+const currentIsland = () => { for (let i = 1; i <= 5; i++) if (islandUnlocked(i) && !islandDone(i)) return i; return 0; };
+
+const BADGES = [
+  { id: 'first', name: 'Primer caso', desc: 'Termina tu primer caso.', icon: 'search', test: () => Object.keys(P.levels).length >= 1 },
+  { id: 'i1', name: 'Experto en Sujeto', desc: 'Completa la Isla del Sujeto.', icon: 'user', test: () => islandDone(1) },
+  { id: 'i2', name: 'Experto en Predicado', desc: 'Completa la Isla del Predicado.', icon: 'bolt', test: () => islandDone(2) },
+  { id: 'i3', name: 'Maestro de Núcleos', desc: 'Completa la Isla de los Núcleos.', icon: 'starline', test: () => islandDone(3) },
+  { id: 'i4', name: 'Objeto Directo', desc: 'Completa la Isla del Objeto Directo.', icon: 'target', test: () => islandDone(4) },
+  { id: 'i5', name: 'Objeto Indirecto', desc: 'Completa la Isla del Objeto Indirecto.', icon: 'arrow', test: () => islandDone(5) },
+  { id: 'perfect', name: 'Caso perfecto', desc: 'Termina un caso con 3 estrellas.', icon: 'medal', test: () => Object.keys(P.levels).some(k => P.levels[k].stars === 3) },
+  { id: 'streak3', name: 'Constante', desc: 'Practica 3 días seguidos.', icon: 'flameline', test: () => P.streak.count >= 3 && currentStreak() >= 3 },
+  { id: 'ok50', name: '50 aciertos', desc: 'Acierta 50 preguntas.', icon: 'check', test: () => P.totals.correct >= 50 },
+  { id: 'castle', name: 'Misión cumplida', desc: 'Aprueba la misión final.', icon: 'castle', test: () => P.exam.bestRatio >= 0.6 },
+  { id: 'castle3', name: 'Gramática de oro', desc: 'Saca 9 de 10 o más en la misión final.', icon: 'trophy', test: () => P.exam.bestRatio >= 0.9 }
+];
+function awardBadges() {
+  const fresh = [];
+  BADGES.forEach(b => { if (!P.badges[b.id] && b.test()) { P.badges[b.id] = Date.now(); fresh.push(b); } });
+  return fresh;
+}
+
+/* ---------- Estado de la interfaz ---------- */
+const state = { screen: 'welcome', island: 1, tab: 'S', caseIdx: 0, play: null, result: null, tIsland: 1 };
+let ctrl = null;
+function destroyCtrl() { if (ctrl && ctrl.destroy) ctrl.destroy(); ctrl = null; }
+function go(screen) { state.screen = screen; render(); window.scrollTo(0, 0); }
+
+/* ---------- Oración coloreada ---------- */
+function roleColor(role, mode) {
+  if (mode === 'S' || mode === 'P' || mode === 'N') return role === 'S' ? 's' : 'p';
+  if (mode === 'OD') return role === 'S' ? 's' : role === 'V' ? 'p' : role === 'OD' ? 'od' : 'n';
+  return role === 'S' ? 's' : role === 'V' ? 'p' : role === 'OD' ? 'od' : role === 'OI' ? 'oi' : 'n';
+}
+function sentHtml(s, mode) {
+  const nuc = mode === 'N' || mode === 'T';
+  return '<div class="sent">' + s.chunks.map(c => {
+    const words = s.tokens.slice(c.first.i, c.last.i + 1).map(t => {
+      const w = esc(t.raw.replace(/\.$/, ''));
+      return nuc && (t.i === s.nsIdx || t.i === s.vIdx) ? '<span class="nuc">' + w + '</span>' : w;
+    }).join(' ');
+    return '<span class="seg c-' + roleColor(c.role, mode) + '">' + words + '</span>';
+  }).join(' ') + '.</div>';
+}
+function legendHtml(mode) {
+  const L = (c, t) => '<span><i class="i-' + c + '"></i>' + t + '</span>';
+  let items;
+  if (mode === 'S' || mode === 'P') items = [L('s', 'Sujeto'), L('p', 'Predicado')];
+  else if (mode === 'N') items = [L('s', 'Sujeto'), L('p', 'Predicado'), '<span><b class="nuc">Subrayado</b> = núcleo</span>'];
+  else if (mode === 'OD') items = [L('s', 'Sujeto'), L('p', 'Verbo'), L('od', 'Objeto directo'), L('n', 'Otra parte')];
+  else items = [L('s', 'Sujeto'), L('p', 'Verbo'), L('od', 'Objeto directo'), L('oi', 'Objeto indirecto'), L('n', 'Otra parte')].concat(mode === 'T' ? ['<span><b class="nuc">Subrayado</b> = núcleo</span>'] : []);
+  return '<div class="legend">' + items.join('') + '</div>';
+}
+const lf = t => t.charAt(0).toLowerCase() + t.slice(1);
+function stepsFor(tab, s) {
+  const q = t => '«' + esc(t) + '»';
+  const subj = { c: 's', h: '<b>¿De quién se habla?</b> De ' + q(s.S) + '. Ese es el <b>sujeto</b>.' };
+  const pred = { c: 'p', h: '<b>¿Qué se dice de él?</b> ' + q(s.P) + '. Ese es el <b>predicado</b>.' };
+  const verb = { c: 'p', h: '<b>¿Qué acción hay?</b> ' + q(s.V) + '. Es el verbo.' };
+  const pre = s.OI && /^para\b/i.test(s.OI) ? 'Para' : 'A';
+  const od = { c: 'od', h: '<b>¿Qué ' + esc(lf(s.V)) + '?</b> ' + q(s.OD) + '. Es el <b>objeto directo</b>.' };
+  const oi = { c: 'oi', h: '<b>¿' + pre + ' quién ' + esc(lf(s.V)) + '?</b> ' + q(s.OI) + '. Es el <b>objeto indirecto</b>.' };
+  let list;
+  if (tab === 'S') list = [subj, pred];
+  else if (tab === 'P') list = [subj, { c: 'p', h: '<b>¿Qué hace?</b> ' + q(s.P) + '. Todo lo que se dice del sujeto es el <b>predicado</b>.' }];
+  else if (tab === 'N') list = [
+    { c: 's', h: 'El sujeto es ' + q(s.S) + '. Su palabra más importante es ' + q(s.NS) + ': el <b>núcleo del sujeto</b>.' },
+    { c: 'p', h: 'El predicado es ' + q(s.P) + '. La palabra que dice la acción es ' + q(s.V) + ': el <b>núcleo del predicado</b>.' }];
+  else if (tab === 'OD') list = [subj, verb, od];
+  else if (tab === 'OI') list = [subj, verb, od, oi];
+  else {
+    list = [{ c: 's', h: 'El <b>sujeto</b> es ' + q(s.S) + ' y su núcleo es ' + q(s.NS) + '.' },
+            { c: 'p', h: 'El <b>predicado</b> es ' + q(s.P) + ' y su núcleo, el verbo, es ' + q(s.V) + '.' }];
+    if (s.OD) list.push(od);
+    if (s.OI) list.push(oi);
+  }
+  return list;
+}
+
+/* ---------- Ventanas y avisos ---------- */
+function closeModal() { const m = $('.overlay'); if (m) m.remove(); }
+function modal(html, onMount) {
+  closeModal();
+  const o = document.createElement('div');
+  o.className = 'overlay';
+  o.innerHTML = '<div class="modal" role="dialog" aria-modal="true">' + html + '</div>';
+  document.body.appendChild(o);
+  o.addEventListener('click', e => { if (e.target === o) closeModal(); });
+  if (onMount) onMount(o);
+  const f = o.querySelector('input,button'); if (f) f.focus();
+}
+function confirmBox(title, text, okLabel, onOk, cls) {
+  modal('<h2>' + esc(title) + '</h2><p>' + esc(text) + '</p><div class="row"><button class="btn secondary" data-m="no">Cancelar</button><button class="btn ' + (cls || 'primary') + '" data-m="yes">' + esc(okLabel) + '</button></div>', o => {
+    o.querySelector('[data-m=no]').onclick = closeModal;
+    o.querySelector('[data-m=yes]').onclick = () => { closeModal(); onOk(); };
+  });
+}
+function toast(msg) {
+  const old = $('.toast'); if (old) old.remove();
+  const t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'status'); t.textContent = msg;
+  document.body.appendChild(t); setTimeout(() => t.remove(), 1800);
+}
+
+/* ---------- Pantallas ---------- */
+function navHtml(active) {
+  const b = (id, ic, t) => '<button data-act="nav" data-to="' + id + '"' + (active === id ? ' aria-current="page"' : '') + '>' + I[ic] + t + '</button>';
+  return '<nav class="nav" aria-label="Menú principal">' + b('map', 'map', 'Mapa') + b('cases', 'book', 'Casos') + b('badges', 'medal', 'Insignias') + '</nav>';
+}
+
+function vWelcome() {
+  const has = !!P.name;
+  return '<main class="screen welcome"><div class="logo" style="color:#fff">' + I.search + '</div>' +
+    '<h1 class="title">Isla Gramática</h1>' +
+    '<p class="sub">Practica el sujeto, el predicado, los núcleos y los objetos resolviendo casos y misiones.</p>' +
+    (has
+      ? '<div class="card" style="margin-top:24px"><div class="hello">Hola de nuevo, ' + esc(P.name) + '</div><div class="levelname">' + levelLabel() + ' · ' + totalStars() + ' estrellas</div></div>' +
+        '<div class="actions"><button class="btn primary" data-act="continue">Continuar</button><button class="btn secondary" data-act="restart">Empezar de nuevo</button></div>'
+      : '<form id="nameForm" autocomplete="off"><label class="field"><span>¿Cómo te llamas?</span><input class="input" id="nameInput" maxlength="20" placeholder="Tu nombre"></label>' +
+        '<button class="btn primary" type="submit" style="margin-top:18px">Comenzar</button></form>') +
+    '<p class="sub" style="margin-top:22px;font-size:14px">Tu avance se guarda en este dispositivo.</p></main>';
+}
+
+function vMap() {
+  const cur = currentIsland();
+  const nodes = [1, 2, 3, 4, 5].map(i => {
+    const unlocked = islandUnlocked(i), done = islandDone(i), cnt = islandDoneCount(i);
+    const cls = done ? 'done' : (i === cur ? 'current' : (!unlocked ? 'locked' : ''));
+    const num = done ? I.check : (!unlocked ? I.lock : i);
+    return '<li class="node ' + cls + '"><span class="num">' + num + '</span>' +
+      '<button class="island" data-act="island" data-i="' + i + '"' + (unlocked ? '' : ' disabled aria-label="' + esc(T[i].name) + ' (bloqueada)"') + '>' +
+      '<div class="nm">' + esc(T[i].name) + '</div>' +
+      '<div class="meter"><i style="width:' + cnt * 20 + '%"></i></div>' +
+      '<div class="meta"><span>' + (unlocked ? cnt + ' de 5 casos' : 'Termina la isla anterior') + '</span><span>' + (unlocked ? star(true, 16) + ' ' + islandStars(i) + '/15' : '') + '</span></div></button></li>';
+  }).join('');
+  const eu = examUnlocked();
+  const castle = '<li class="node castle ' + (eu ? 'current' : 'locked') + '"><span class="num">' + (eu ? I.castle : I.lock) + '</span>' +
+    '<button class="island" data-act="exam"' + (eu ? '' : ' disabled aria-label="Castillo Final (bloqueado)"') + '><div class="nm">Castillo Final</div>' +
+    '<div class="meta"><span>' + (eu ? 'Misión examen' : 'Completa las 5 islas') + '</span><span>' + (P.exam.attempts ? 'Mejor: ' + esc(P.exam.bestText) : '') + '</span></div></button></li>';
+  return '<main class="screen"><header class="top"><div><div class="hello">Hola, ' + esc(P.name) + '</div><div class="levelname">' + levelLabel() + '</div></div>' +
+    '<div class="stats"><span class="pill" title="Estrellas">' + star(true) + totalStars() + '</span><span class="pill" title="Días seguidos">' + flame + currentStreak() + '</span></div></header>' +
+    '<h1 class="title">Tu aventura</h1><p class="sub">Elige una isla y resuelve sus casos.</p>' +
+    '<ol class="path">' + nodes + castle + '</ol>' +
+    '<div style="text-align:center;margin-top:10px"><button class="link" data-act="teacher">Zona del maestro</button></div></main>' + navHtml('map');
+}
+
+function vIsland() {
+  const i = state.island, t = T[i];
+  const ex = Core.EXAMPLES[t.key][0] || Core.EXAMPLES.T[0];
+  const firstOpen = [1, 2, 3, 4, 5].find(l => levelUnlocked(i, l) && !levelDone(i, l));
+  const rows = [1, 2, 3, 4, 5].map(l => {
+    const un = levelUnlocked(i, l), st = lvStars(i, l);
+    return '<li><button class="lvl' + (l === firstOpen ? ' next' : '') + '" data-act="level" data-l="' + l + '"' + (un ? '' : ' disabled') + '>' +
+      '<span class="ln">' + (un ? l : I.lock) + '</span>' +
+      '<span class="lt">Caso ' + l + ': ' + Core.LEVEL_NAMES[l - 1] + '<small>' + (un ? (st ? 'Completado' : Core.QUESTIONS_PER_LEVEL + ' preguntas') : 'Termina el caso anterior') + '</small></span>' +
+      (un ? starsRow(st) : '') + '</button></li>';
+  }).join('');
+  return '<main class="screen"><div class="back"><button class="icon-btn" data-act="toMap" aria-label="Volver al mapa">' + I.back + '</button><span class="tag t' + i + '">Isla ' + i + ' de 5</span></div>' +
+    '<h1 class="title">' + esc(t.name) + '</h1>' +
+    '<div class="card theory" style="margin-top:14px"><h2>Recuerda</h2><p>' + esc(t.theory) + '</p>' +
+    '<div style="margin-top:10px;background:#fff;border-radius:10px;padding:8px 10px">' + sentHtml(ex, t.key) + '</div>' + legendHtml(t.key) + '</div>' +
+    '<button class="btn secondary" style="margin-top:12px" data-act="cases" data-tab="' + t.key + '">' + I.book.replace('<svg', '<svg width="22" height="22"') + ' Ver más ejemplos</button>' +
+    '<ul class="levels">' + rows + '</ul></main>' + navHtml('map');
+}
+
+const CASE_TABS = [['S', 'Sujeto', 1], ['P', 'Predicado', 2], ['N', 'Núcleos', 3], ['OD', 'Objeto directo', 4], ['OI', 'Objeto indirecto', 5], ['T', 'Todo junto', 0]];
+function vCases() {
+  const list = Core.EXAMPLES[state.tab];
+  const idx = ((state.caseIdx % list.length) + list.length) % list.length;
+  const s = list[idx];
+  const tabInfo = CASE_TABS.find(t => t[0] === state.tab);
+  const steps = stepsFor(state.tab, s).map((st, n) => '<li><span class="sn ' + st.c + '">' + (n + 1) + '</span><div>' + st.h + '</div></li>').join('');
+  const tabs = CASE_TABS.map(t => '<button class="tab" role="tab" data-act="tab" data-tab="' + t[0] + '" aria-selected="' + (t[0] === state.tab) + '">' + t[1] + '</button>').join('');
+  const practice = tabInfo[2] && islandUnlocked(tabInfo[2])
+    ? '<button class="btn secondary" style="margin-top:14px" data-act="island" data-i="' + tabInfo[2] + '">Practicar este tema</button>' : '';
+  return '<main class="screen"><h1 class="title">Libro de casos</h1><p class="sub">Casos resueltos paso a paso.</p>' +
+    '<div class="tabs" role="tablist">' + tabs + '</div>' +
+    '<div class="card"><div class="levelname" style="margin-bottom:6px">Caso ' + (idx + 1) + ' de ' + list.length + '</div>' + sentHtml(s, state.tab) + legendHtml(state.tab) + '</div>' +
+    '<ol class="steps">' + steps + '</ol>' +
+    '<div class="case-nav"><button class="btn secondary" data-act="casePrev">Anterior</button><button class="btn primary" data-act="caseNext">Siguiente caso</button></div>' + practice + '</main>' + navHtml('cases');
+}
+
+function vBadges() {
+  const n = BADGES.filter(b => P.badges[b.id]).length;
+  return '<main class="screen"><h1 class="title">Insignias</h1><p class="sub">' + n + ' de ' + BADGES.length + ' conseguidas</p><div class="badges">' +
+    BADGES.map(b => { const on = !!P.badges[b.id]; return '<div class="badge ' + (on ? 'on' : 'off') + '"><div class="bi">' + I[b.icon] + '</div><b>' + esc(b.name) + '</b><small>' + esc(b.desc) + '</small></div>'; }).join('') +
+    '</div></main>' + navHtml('badges');
+}
+
+function vExam() {
+  return '<main class="screen"><div class="back"><button class="icon-btn" data-act="toMap" aria-label="Volver al mapa">' + I.back + '</button><span class="tag t6">Misión final</span></div>' +
+    '<h1 class="title">Castillo Final</h1>' +
+    '<div class="card" style="margin-top:14px"><p>Responde <b>' + C.examCount + ' preguntas</b> con oraciones de todas las islas.</p>' +
+    '<p style="margin-top:8px">' + (C.examFeedback ? 'Verás la explicación después de cada pregunta.' : 'No hay pistas: al final verás qué respondiste bien y por qué.') + '</p></div>' +
+    (P.exam.attempts ? '<div class="card" style="margin-top:12px;display:flex;justify-content:space-between;align-items:center"><span>Tu mejor resultado: <b>' + esc(P.exam.bestText) + '</b></span>' + starsRow(P.exam.bestStars) + '</div>' : '') +
+    '<div class="actions"><button class="btn primary" data-act="startExam">Comenzar misión</button></div></main>' + navHtml('map');
+}
+
+function vResult() {
+  const r = state.result;
+  if (r.mode === 'exam') {
+    const msg = r.stars === 3 ? '¡Misión cumplida con honores!' : r.stars === 2 ? '¡Muy buen trabajo!' : r.stars === 1 ? '¡Lo lograste! Con un poco más de práctica sacarás más.' : 'Sigue practicando: repasa los casos y vuelve a intentarlo.';
+    const wrong = r.wrong.map(w => '<div class="rv"><div class="rs">' + esc(w.q.s.text) + '</div><div class="rf">' + esc(w.q.fact) + '</div></div>').join('');
+    return '<main class="screen result"><div class="bigstars">' + [1, 2, 3].map(n => star(n <= r.stars)).join('') + '</div>' +
+      '<h1 class="title">Misión final</h1><div class="score">' + r.correct + ' de ' + r.total + '</div><p class="sub">' + msg + '</p>' +
+      (r.newBadges.length ? '<div class="card newb"><b>Nueva insignia:</b> ' + r.newBadges.map(b => esc(b.name)).join(', ') + '</div>' : '') +
+      (wrong ? '<div class="review"><h2>Para repasar</h2>' + wrong + '</div>' : '<p class="sub" style="margin-top:14px">No fallaste ninguna pregunta.</p>') +
+      '<div class="actions"><button class="btn secondary" data-act="cases" data-tab="T">Repasar en el Libro de casos</button><button class="btn secondary" data-act="startExam">Intentar otra vez</button><button class="btn primary" data-act="toMap">Volver al mapa</button></div></main>';
+  }
+  const t = T[r.island];
+  if (!r.ok) {
+    return '<main class="screen result"><div class="logo" style="margin:10px auto 18px;background:#B45309;color:#fff">' + I.bulb + '</div>' +
+      '<h1 class="title">Se acabaron las vidas</h1><p class="sub">No pasa nada: los detectives también se equivocan. Repasa un ejemplo y vuelve a intentarlo.</p>' +
+      '<div class="actions"><button class="btn primary" data-act="retry">Intentar de nuevo</button><button class="btn secondary" data-act="cases" data-tab="' + t.key + '">Ver ejemplos</button><button class="btn ghost" data-act="toIsland">Volver a la isla</button></div></main>';
+  }
+  const msg = r.stars === 3 ? (r.errors === 0 ? '¡Caso resuelto sin errores!' : '¡Caso resuelto casi sin errores!') : r.stars === 2 ? '¡Buen trabajo, detective!' : '¡Lo lograste! Puedes repetirlo para ganar más estrellas.';
+  const hasNext = r.level < 5;
+  return '<main class="screen result"><div class="bigstars">' + [1, 2, 3].map(n => star(n <= r.stars)).join('') + '</div>' +
+    '<h1 class="title">Caso ' + r.level + ' resuelto</h1><p class="sub">' + esc(t.name) + ' · ' + msg + '</p>' +
+    '<div class="kpis"><div class="kpi"><b>' + Core.QUESTIONS_PER_LEVEL + '</b><span>preguntas</span></div><div class="kpi"><b>' + r.errors + '</b><span>errores</span></div><div class="kpi"><b>' + r.stars + '</b><span>estrellas</span></div></div>' +
+    (r.newBadges.length ? '<div class="card newb"><b>Nueva insignia:</b> ' + r.newBadges.map(b => esc(b.name)).join(', ') + '</div>' : '') +
+    (r.islandJustDone ? '<div class="card newb"><b>¡Isla completada!</b> ' + (r.island < 5 ? 'Ya puedes entrar a la siguiente.' : 'Ahora puedes entrar al Castillo Final.') + '</div>' : '') +
+    '<div class="actions">' + (hasNext ? '<button class="btn primary" data-act="nextLevel">Siguiente caso</button>' : '<button class="btn primary" data-act="toMap">Volver al mapa</button>') +
+    '<button class="btn secondary" data-act="retry">Repetir este caso</button><button class="btn ghost" data-act="toIsland">Volver a la isla</button></div></main>';
+}
+
+/* ---------- Zona del maestro ---------- */
+function vTeacher() {
+  const i = state.tIsland, m = C.msgs[i];
+  const nCustom = CUSTOM.length;
+  const base = [1, 2, 3, 4, 5].reduce((a, k) => a + Core.PARSED.pools[k].length, 0);
+  return '<main class="screen"><div class="back"><button class="icon-btn" data-act="toMap" aria-label="Salir de la zona del maestro">' + I.back + '</button><span class="tag t6">Zona del maestro</span></div>' +
+    '<h1 class="title">Personalizar</h1><p class="sub">Los cambios se guardan automáticamente en este dispositivo.</p>' +
+    '<section class="sec card"><h2>Mensajes de retroalimentación</h2><p class="note">Se muestran al acertar y al fallar en los casos de cada isla.</p>' +
+    '<label class="field"><span>Isla</span><select class="input" id="tIsland">' + [1, 2, 3, 4, 5].map(k => '<option value="' + k + '"' + (k === i ? ' selected' : '') + '>' + esc(T[k].name) + '</option>').join('') + '</select></label>' +
+    '<label class="field"><span>Mensaje al acertar</span><textarea class="input" id="tOk" maxlength="140">' + esc(m.ok) + '</textarea></label>' +
+    '<label class="field"><span>Pista al fallar</span><textarea class="input" id="tBad" maxlength="220">' + esc(m.bad) + '</textarea></label>' +
+    '<button class="btn secondary small" style="margin-top:12px" data-act="tResetMsg">Restablecer esta isla</button></section>' +
+    '<section class="sec card"><h2>Misión final</h2>' +
+    '<label class="field"><span>Número de preguntas</span><select class="input" id="tCount">' + [5, 10, 15, 20].map(n => '<option' + (n === C.examCount ? ' selected' : '') + '>' + n + '</option>').join('') + '</select></label>' +
+    '<label class="check"><input type="checkbox" id="tFb"' + (C.examFeedback ? ' checked' : '') + '><span>Mostrar la explicación después de cada pregunta del examen</span></label></section>' +
+    '<section class="sec card"><h2>Oraciones propias</h2><p class="note">Banco actual: ' + base + ' oraciones incluidas + ' + nCustom + ' propias. Las tuyas se mezclan con las demás.</p>' +
+    '<label class="field"><span>Sujeto completo</span><input class="input" id="cS" placeholder="Mi gato negro"></label>' +
+    '<label class="field"><span>Núcleo del sujeto</span><input class="input" id="cNS" placeholder="gato"></label>' +
+    '<label class="field"><span>Predicado (empieza con el verbo)</span><input class="input" id="cP" placeholder="come pescado en la cocina"></label>' +
+    '<label class="field"><span>Objeto directo (opcional)</span><input class="input" id="cOD" placeholder="pescado"></label>' +
+    '<label class="field"><span>Objeto indirecto (opcional)</span><input class="input" id="cOI" placeholder="a su dueña"></label>' +
+    '<div id="cMsg" aria-live="polite"></div><button class="btn primary" style="margin-top:14px" data-act="addCustom">Agregar oración</button>' +
+    (nCustom ? '<ul class="clist">' + CUSTOM.map((r, k) => '<li><span>' + esc(r.S + ' ' + r.P + '.') + '</span><button data-act="delCustom" data-k="' + k + '" aria-label="Eliminar oración">Quitar</button></li>').join('') + '</ul>' : '') + '</section>' +
+    '<section class="sec card"><h2>Avance y seguridad</h2>' +
+    '<label class="check"><input type="checkbox" id="tUnlock"' + (C.unlockAll ? ' checked' : '') + '><span>Desbloquear todas las islas y casos (para probar o repasar)</span></label>' +
+    '<label class="field"><span>Código del maestro (4 a 8 números)</span><input class="input" id="tPin" inputmode="numeric" maxlength="8" value="' + esc(C.pin) + '"></label>' +
+    '<button class="btn secondary" style="margin-top:14px" data-act="tReset">Borrar el avance de este dispositivo</button></section></main>';
+}
+
+/* ---------- Render ---------- */
+function render() {
+  destroyCtrl();
+  closeModal();
+  switch (state.screen) {
+    case 'welcome': app.innerHTML = vWelcome(); break;
+    case 'map': app.innerHTML = vMap(); break;
+    case 'island': app.innerHTML = vIsland(); break;
+    case 'cases': app.innerHTML = vCases(); break;
+    case 'badges': app.innerHTML = vBadges(); break;
+    case 'exam': app.innerHTML = vExam(); break;
+    case 'result': app.innerHTML = vResult(); break;
+    case 'teacher': app.innerHTML = vTeacher(); break;
+    case 'play': renderPlay(); return;
+  }
+  const nf = $('#nameInput'); if (nf) nf.focus();
+}
+
+/* =====================================================================
+   EJERCICIOS (componentes)
+   ===================================================================== */
+function mountChoice(host, q, ctx) {
+  let sel = -1, locked = false, res = null;
+  const gone = new Set();
+  function draw() {
+    const head = '<div class="sentence">' + esc(q.s.text) + '</div>' + (q.claim ? '<div class="claim">' + esc(q.claim) + '</div>' : '');
+    const opts = q.options.map((o, i) => {
+      let cls = 'opt', mk = '';
+      if (res && i === res.correct) { cls += ' ok'; mk = '<span class="mk">' + I.okc + '</span>'; }
+      else if (res && i === res.wrong) { cls += ' bad'; mk = '<span class="mk">' + I.badc + '</span>'; }
+      else if (i === sel) cls += ' sel';
+      if (gone.has(i) && !(res && i === res.wrong)) cls += ' gone';
+      return '<button class="' + cls + '" data-i="' + i + '" aria-pressed="' + (i === sel) + '"' + (gone.has(i) ? ' aria-disabled="true"' : '') + '>' + mk + '<span>' + esc(o) + '</span></button>';
+    }).join('');
+    host.innerHTML = head + '<div class="opts ' + q.layout + '" role="group">' + opts + '</div>';
+  }
+  host.onclick = e => {
+    const b = e.target.closest('.opt'); if (!b || locked) return;
+    const i = +b.dataset.i; if (gone.has(i)) return;
+    sel = i; draw(); const nb = host.querySelector('[data-i="' + i + '"]'); if (nb) nb.focus(); ctx.onChange();
+  };
+  draw();
+  return {
+    isReady: () => sel >= 0,
+    check() { locked = true; const ok = sel === q.correct; if (ok) res = { correct: sel }; else { res = { wrong: sel }; gone.add(sel); } draw(); return ok; },
+    unlock() { locked = false; res = null; sel = -1; draw(); },
+    reveal() { res = { correct: q.correct, wrong: res && res.wrong !== undefined ? res.wrong : null }; locked = true; draw(); }
+  };
+}
+
+function mountTap(host, q, ctx) {
+  let sel = new Set(), locked = false, marks = {};
+  const toks = q.s.tokens;
+  function draw() {
+    const html = toks.map(t => {
+      let cls = 'tok';
+      if (marks[t.i]) cls += ' ' + marks[t.i]; else if (sel.has(t.i)) cls += ' sel';
+      return '<button class="' + cls + '" data-i="' + t.i + '" aria-pressed="' + sel.has(t.i) + '">' + esc(t.raw.replace(/\.$/, '')) + '</button>';
+    }).join('');
+    host.innerHTML = '<div class="toks">' + html + '</div><p class="hint">' + (q.single ? 'Toca una sola palabra.' : 'Puedes tocar varias palabras. Toca otra vez para quitar una.') + '</p>';
+  }
+  host.onclick = e => {
+    const b = e.target.closest('.tok'); if (!b || locked) return;
+    const i = +b.dataset.i;
+    if (q.single) { sel = new Set(sel.has(i) ? [] : [i]); } else if (sel.has(i)) sel.delete(i); else sel.add(i);
+    draw(); const nb = host.querySelector('[data-i="' + i + '"]'); if (nb) nb.focus(); ctx.onChange();
+  };
+  draw();
+  const target = new Set(q.target);
+  const same = () => sel.size === target.size && [...sel].every(i => target.has(i));
+  return {
+    isReady: () => sel.size > 0,
+    check() { locked = true; const ok = same(); marks = {}; sel.forEach(i => { if (ok || !target.has(i)) marks[i] = ok ? 'ok' : 'bad'; }); draw(); return ok; },
+    unlock() { locked = false; [...sel].forEach(i => { if (!target.has(i)) sel.delete(i); }); marks = {}; draw(); },
+    reveal() { locked = true; marks = {}; toks.forEach(t => { if (target.has(t.i)) marks[t.i] = sel.has(t.i) ? 'ok' : 'miss'; else if (sel.has(t.i)) marks[t.i] = 'bad'; }); draw(); }
+  };
+}
+
+function mountDrag(host, q, ctx) {
+  const placed = {}; q.chips.forEach(c => { placed[c.id] = null; });
+  let selId = null, locked = false, marks = {}, drag = null, justDragged = false;
+  function chipHtml(c, where) {
+    let cls = 'chip';
+    if (where === 'box') { const b = q.boxes.find(b => b.key === placed[c.id]); cls += ' placed in-' + b.color; }
+    if (marks[c.id]) cls += ' ' + marks[c.id];
+    if (selId === c.id) cls += ' sel';
+    return '<button class="' + cls + '" data-chip="' + c.id + '">' + esc(c.text) + '</button>';
+  }
+  function draw() {
+    const zones = q.boxes.map(b => {
+      const inside = q.chips.filter(c => placed[c.id] === b.key).map(c => chipHtml(c, 'box')).join('');
+      return '<div class="zone ' + b.color + '" data-zone="' + b.key + '"><button class="zl" data-zonebtn="' + b.key + '" aria-label="Poner la ficha elegida en ' + esc(b.label) + '">' + esc(b.label) + ' <small>' + esc(b.sub) + '</small></button><div class="zchips">' + inside + '</div></div>';
+    }).join('');
+    const bank = q.chips.filter(c => placed[c.id] === null).map(c => chipHtml(c, 'bank')).join('');
+    host.innerHTML = '<div class="sentence">' + esc(q.s.text) + '</div><div class="zones">' + zones + '</div><div class="bank" data-zone="__bank">' + bank + '</div>' +
+      '<p class="hint">Arrastra las fichas a su caja. También puedes tocar una ficha y luego tocar la caja.</p>';
+  }
+  function put(id, key) { placed[id] = key === '__bank' ? null : key; selId = null; draw(); ctx.onChange(); }
+  host.onclick = e => {
+    if (justDragged || locked) return;
+    const chipEl = e.target.closest('.chip');
+    if (chipEl) {
+      const id = chipEl.dataset.chip;
+      if (placed[id] !== null) { placed[id] = null; selId = null; }
+      else selId = selId === id ? null : id;
+      draw(); ctx.onChange(); return;
+    }
+    const z = e.target.closest('[data-zone]');
+    if (z && selId) put(selId, z.dataset.zone);
+  };
+  const zoneAt = (x, y) => { const el = document.elementFromPoint(x, y); const z = el && el.closest('[data-zone]'); return z && host.contains(z) ? z : null; };
+  host.addEventListener('pointerdown', e => {
+    if (locked) return;
+    const chipEl = e.target.closest('.chip'); if (!chipEl) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    drag = { id: chipEl.dataset.chip, x: e.clientX, y: e.clientY, started: false, ghost: null, pid: e.pointerId };
+  });
+  function onMove(e) {
+    if (!drag || e.pointerId !== drag.pid) return;
+    if (!drag.started) {
+      if (Math.hypot(e.clientX - drag.x, e.clientY - drag.y) < 8) return;
+      drag.started = true; selId = null;
+      const g = document.createElement('div'); g.className = 'dragghost'; g.textContent = q.chips.find(c => c.id === drag.id).text;
+      document.body.appendChild(g); drag.ghost = g;
+      const src = host.querySelector('[data-chip="' + drag.id + '"]'); if (src) src.classList.add('dragging');
+    }
+    drag.ghost.style.left = e.clientX + 'px'; drag.ghost.style.top = e.clientY + 'px';
+    host.querySelectorAll('.hot').forEach(n => n.classList.remove('hot'));
+    const z = zoneAt(e.clientX, e.clientY); if (z) z.classList.add('hot');
+    e.preventDefault();
+  }
+  function endDrag(e, drop) {
+    if (!drag || (e && e.pointerId !== drag.pid)) return;
+    const d = drag; drag = null;
+    if (!d.started) return;
+    if (d.ghost) d.ghost.remove();
+    justDragged = true; setTimeout(() => { justDragged = false; }, 0);
+    const z = drop ? zoneAt(e.clientX, e.clientY) : null;
+    if (z) put(d.id, z.dataset.zone); else draw();
+  }
+  const onUp = e => endDrag(e, true), onCancel = e => endDrag(e, false);
+  window.addEventListener('pointermove', onMove, { passive: false });
+  window.addEventListener('pointerup', onUp);
+  window.addEventListener('pointercancel', onCancel);
+  host.addEventListener('click', e => {
+    const zb = e.target.closest('[data-zonebtn]');
+    if (zb && !locked && selId) put(selId, zb.dataset.zonebtn);
+  });
+  draw();
+  return {
+    isReady: () => q.chips.every(c => placed[c.id] !== null),
+    check() {
+      locked = true; marks = {}; let all = true;
+      q.chips.forEach(c => { const ok = placed[c.id] === c.cat; marks[c.id] = ok ? 'ok' : 'bad'; if (!ok) all = false; });
+      draw(); return all;
+    },
+    unlock() { locked = false; q.chips.forEach(c => { if (marks[c.id] === 'bad') placed[c.id] = null; }); marks = {}; selId = null; draw(); },
+    reveal() { locked = true; q.chips.forEach(c => { placed[c.id] = c.cat; marks[c.id] = 'ok'; }); draw(); },
+    destroy() {
+      window.removeEventListener('pointermove', onMove); window.removeEventListener('pointerup', onUp); window.removeEventListener('pointercancel', onCancel);
+      const g = $('.dragghost'); if (g) g.remove();
+    }
+  };
+}
+
+function mountMatch(host, q, ctx) {
+  const assign = {};
+  let sel = null, locked = false, marks = {};
+  const ownerOf = id => q.labels.map(l => l.key).find(k => assign[k] === id);
+  function draw() {
+    const left = q.labels.map(l => {
+      const a = assign[l.key], it = a && q.items.find(i => i.id === a);
+      let cls = 'mbtn'; if (marks[l.key]) cls += ' ' + marks[l.key]; else if (a) cls += ' in-' + l.color; else if (sel && sel.kind === 'l' && sel.id === l.key) cls += ' sel';
+      return '<button class="' + cls + '" data-l="' + l.key + '">' + esc(l.label) + '<small>' + (it ? esc(it.text) : esc(l.sub)) + '</small></button>';
+    }).join('');
+    const right = q.items.map(it => {
+      const o = ownerOf(it.id), lab = o && q.labels.find(l => l.key === o);
+      let cls = 'mbtn'; if (o && marks[o]) cls += ' ' + marks[o]; else if (o) cls += ' in-' + lab.color; else if (sel && sel.kind === 'i' && sel.id === it.id) cls += ' sel';
+      return '<button class="' + cls + '" data-i="' + it.id + '">' + esc(it.text) + (lab ? '<small>' + esc(lab.label) + '</small>' : '') + '</button>';
+    }).join('');
+    host.innerHTML = '<div class="sentence">' + esc(q.s.text) + '</div><div class="match"><div class="col">' + left + '</div><div class="col">' + right + '</div></div><p class="hint">Toca un nombre y luego su parte de la oración. Toca una pareja para deshacerla.</p>';
+  }
+  host.onclick = e => {
+    if (locked) return;
+    const lb = e.target.closest('[data-l]'), ib = e.target.closest('[data-i]');
+    if (lb) {
+      const k = lb.dataset.l;
+      if (sel && sel.kind === 'i') { const prev = ownerOf(sel.id); if (prev) delete assign[prev]; assign[k] = sel.id; sel = null; }
+      else if (assign[k] && !sel) delete assign[k];
+      else sel = { kind: 'l', id: k };
+    } else if (ib) {
+      const id = ib.dataset.i, o = ownerOf(id);
+      if (sel && sel.kind === 'l') { if (o) delete assign[o]; assign[sel.id] = id; sel = null; }
+      else if (o && !sel) delete assign[o];
+      else sel = { kind: 'i', id };
+    } else return;
+    draw(); ctx.onChange();
+  };
+  draw();
+  const okFor = k => { const it = q.items.find(i => i.id === assign[k]); return !!it && it.cat === k; };
+  return {
+    isReady: () => q.labels.every(l => assign[l.key]),
+    check() { locked = true; marks = {}; let all = true; q.labels.forEach(l => { const ok = okFor(l.key); marks[l.key] = ok ? 'ok' : 'bad'; if (!ok) all = false; }); draw(); return all; },
+    unlock() { locked = false; q.labels.forEach(l => { if (marks[l.key] === 'bad') delete assign[l.key]; }); marks = {}; sel = null; draw(); },
+    reveal() { locked = true; q.labels.forEach(l => { assign[l.key] = q.items.find(i => i.cat === l.key).id; marks[l.key] = 'ok'; }); draw(); }
+  };
+}
+
+function mountQuestion(host, q, ctx) {
+  if (q.type === 'tap') return mountTap(host, q, ctx);
+  if (q.type === 'drag') return mountDrag(host, q, ctx);
+  if (q.type === 'match') return mountMatch(host, q, ctx);
+  return mountChoice(host, q, ctx);
+}
+
+/* =====================================================================
+   FLUJO DE JUEGO
+   ===================================================================== */
+function startLevel(i, l) {
+  const qs = Core.levelQuestions(i, l, P.seen[i]); saveP();
+  state.island = i;
+  state.play = { mode: 'level', island: i, level: l, questions: qs, idx: 0, hearts: Core.HEARTS, errors: 0, attempts: 0, phase: 'answer', failed: false, log: [] };
+  go('play');
+}
+function startExam() {
+  const qs = Core.examQuestions(C.examCount, P.seenExam); saveP();
+  state.play = { mode: 'exam', questions: qs, idx: 0, hearts: 0, errors: 0, attempts: 0, phase: 'answer', failed: false, log: [] };
+  go('play');
+}
+const heartsHtml = n => heart + ' ' + n;
+
+function renderPlay() {
+  const p = state.play, q = p.questions[p.idx], n = p.questions.length;
+  const tag = p.mode === 'exam' ? '<span class="tag t6">Misión final · ' + (p.idx + 1) + ' de ' + n + '</span>'
+    : '<span class="tag t' + p.island + '">' + esc(T[p.island].short) + ' · Caso ' + p.level + ' · ' + (p.idx + 1) + ' de ' + n + '</span>';
+  app.innerHTML = '<main class="play"><div class="play-top"><button class="icon-btn" data-act="quit" aria-label="Salir">' + I.close + '</button>' +
+    '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + n + '" aria-valuenow="' + p.idx + '"><i style="width:' + (p.idx / n * 100) + '%"></i></div>' +
+    (p.mode === 'level' ? '<div class="hearts" id="hearts" aria-label="Vidas: ' + p.hearts + '">' + heartsHtml(p.hearts) + '</div>' : '') + '</div>' +
+    '<div class="play-head">' + tag + '<h1 class="prompt">' + esc(q.prompt) + '</h1></div>' +
+    '<div class="qhost" id="qhost"></div><div id="fb" aria-live="polite"></div>' +
+    '<div class="play-foot"><button class="btn primary" id="mainBtn" data-act="main">Comprobar</button></div></main>';
+  ctrl = mountQuestion($('#qhost'), q, { onChange: updateBtn });
+  updateBtn();
+}
+function updateBtn() {
+  const p = state.play, b = $('#mainBtn'); if (!b) return;
+  const last = p.idx + 1 >= p.questions.length;
+  b.className = 'btn primary';
+  if (p.phase === 'answer') {
+    b.textContent = p.mode === 'exam' && !C.examFeedback ? (last ? 'Terminar' : 'Responder') : 'Comprobar';
+    b.disabled = !ctrl.isReady();
+  } else {
+    b.disabled = false;
+    if (p.phase === 'bad') { b.textContent = 'Intentar otra vez'; b.className = 'btn warn'; }
+    else { b.textContent = p.failed ? 'Ver resultado' : (last ? 'Terminar' : 'Seguir'); b.className = 'btn ' + (p.phase === 'ok' ? 'good' : 'primary'); }
+  }
+}
+function fbBox(kind, icon, title, text) {
+  return '<div class="fb ' + kind + '">' + (icon ? I[icon] : '') + '<div><h3>' + esc(title) + '</h3>' + (text ? '<p>' + esc(text) + '</p>' : '') + '</div></div>';
+}
+function showFb(kind, q) {
+  const m = C.msgs[q.topic] || DEFAULT_MSGS[q.topic] || { ok: '¡Muy bien!', bad: '' };
+  const fb = $('#fb');
+  if (kind === 'ok') fb.innerHTML = fbBox('ok', 'okc', m.ok || '¡Muy bien!', q.fact);
+  else if (kind === 'bad') fb.innerHTML = fbBox('hint', 'bulb', 'Casi. Mira esta pista', m.bad || 'Lee la oración otra vez con calma.');
+  else fb.innerHTML = fbBox('bad', 'badc', 'Así es la respuesta', q.fact);
+  fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+function onMain() {
+  const p = state.play, q = p.questions[p.idx];
+  if (p.phase === 'answer') {
+    if (!ctrl.isReady()) return;
+    const ok = ctrl.check();
+    if (p.mode === 'exam') {
+      p.log.push({ q, ok }); P.totals.answered++; if (ok) P.totals.correct++;
+      if (!C.examFeedback) { advance(); return; }
+      if (ok) { p.phase = 'ok'; showFb('ok', q); } else { ctrl.reveal(); p.phase = 'revealed'; showFb('revealed', q); }
+      updateBtn(); return;
+    }
+    p.attempts++;
+    if (ok) { p.log.push({ q, ok: true }); P.totals.answered++; P.totals.correct++; p.phase = 'ok'; showFb('ok', q); }
+    else {
+      p.hearts--; p.errors++;
+      $('#hearts').innerHTML = heartsHtml(p.hearts); $('#hearts').setAttribute('aria-label', 'Vidas: ' + p.hearts);
+      if (p.hearts <= 0) p.failed = true;
+      if (p.failed || p.attempts >= 2) { ctrl.reveal(); p.phase = 'revealed'; p.log.push({ q, ok: false }); P.totals.answered++; showFb('revealed', q); }
+      else { p.phase = 'bad'; showFb('bad', q); }
+    }
+    saveP(); updateBtn();
+  } else if (p.phase === 'bad') {
+    ctrl.unlock(); p.phase = 'answer'; $('#fb').innerHTML = ''; updateBtn();
+  } else advance();
+}
+function advance() {
+  const p = state.play;
+  if (p.failed) { finishLevel(false); return; }
+  if (p.idx + 1 >= p.questions.length) { if (p.mode === 'exam') finishExam(); else finishLevel(true); return; }
+  p.idx++; p.attempts = 0; p.phase = 'answer'; renderPlay(); window.scrollTo(0, 0);
+}
+function finishLevel(ok) {
+  const p = state.play, key = lvKey(p.island, p.level), wasDone = islandDone(p.island);
+  let stars = 0;
+  if (ok) {
+    stars = p.errors <= 1 ? 3 : p.errors <= 3 ? 2 : 1;
+    const prev = P.levels[key] || { stars: 0 };
+    P.levels[key] = { stars: Math.max(prev.stars, stars) };
+    touchStreak();
+  }
+  const newBadges = awardBadges(); saveP();
+  state.result = { mode: 'level', ok, stars, island: p.island, level: p.level, errors: p.errors, newBadges, islandJustDone: ok && !wasDone && islandDone(p.island) };
+  go('result');
+}
+function finishExam() {
+  const p = state.play, total = p.questions.length, correct = p.log.filter(x => x.ok).length, ratio = correct / total;
+  const stars = ratio >= 0.9 ? 3 : ratio >= 0.7 ? 2 : ratio >= 0.5 ? 1 : 0;
+  P.exam.attempts++;
+  if (ratio >= P.exam.bestRatio) { P.exam.bestRatio = ratio; P.exam.bestStars = Math.max(stars, 0); P.exam.bestText = correct + ' de ' + total; }
+  touchStreak();
+  const newBadges = awardBadges(); saveP();
+  state.result = { mode: 'exam', correct, total, stars, wrong: p.log.filter(x => !x.ok), newBadges };
+  go('result');
+}
+
+/* =====================================================================
+   EVENTOS
+   ===================================================================== */
+const actions = {
+  continue() { go('map'); },
+  restart() { confirmBox('¿Empezar de nuevo?', 'Se borrará el avance guardado en este dispositivo.', 'Sí, borrar', () => { P = defaultProgress(); saveP(); go('welcome'); }, 'warn'); },
+  nav(el) { go(el.dataset.to); },
+  toMap() { go('map'); },
+  toIsland() { go('island'); },
+  island(el) { state.island = +el.dataset.i; go('island'); },
+  exam() { go('exam'); },
+  level(el) { startLevel(state.island, +el.dataset.l); },
+  retry() { const r = state.result; startLevel(r.island, r.level); },
+  nextLevel() { const r = state.result; startLevel(r.island, r.level + 1); },
+  cases(el) { state.tab = el.dataset.tab || state.tab; state.caseIdx = 0; go('cases'); },
+  tab(el) { state.tab = el.dataset.tab; state.caseIdx = 0; render(); const t = $('.tab[aria-selected=true]'); if (t) t.focus(); },
+  casePrev() { state.caseIdx--; render(); window.scrollTo(0, 0); },
+  caseNext() { state.caseIdx++; render(); window.scrollTo(0, 0); },
+  startExam() { startExam(); },
+  main() { onMain(); },
+  quit() { confirmBox('¿Salir del caso?', 'Perderás el avance de este intento.', 'Salir', () => { go(state.play.mode === 'exam' ? 'map' : 'island'); }, 'warn'); },
+  teacher() {
+    modal('<h2>Zona del maestro</h2><p>Escribe el código para continuar.</p><input class="input" id="pinIn" type="password" inputmode="numeric" autocomplete="off" style="margin-top:14px" aria-label="Código del maestro"><div id="pinErr" class="err" hidden>Código incorrecto.</div><div class="row"><button class="btn secondary" data-m="no">Cancelar</button><button class="btn primary" data-m="yes">Entrar</button></div>', o => {
+      const inp = o.querySelector('#pinIn');
+      const tryPin = () => { if (inp.value === C.pin) { closeModal(); go('teacher'); } else { o.querySelector('#pinErr').hidden = false; inp.select(); } };
+      o.querySelector('[data-m=no]').onclick = closeModal;
+      o.querySelector('[data-m=yes]').onclick = tryPin;
+      inp.addEventListener('keydown', e => { if (e.key === 'Enter') tryPin(); });
+    });
+  },
+  tResetMsg() { C.msgs[state.tIsland] = JSON.parse(JSON.stringify(DEFAULT_MSGS[state.tIsland])); saveC(); render(); toast('Mensajes restablecidos'); },
+  addCustom() {
+    const row = { S: $('#cS').value.trim(), NS: $('#cNS').value.trim(), P: $('#cP').value.trim(), OD: $('#cOD').value.trim(), OI: $('#cOI').value.trim() };
+    const v = Core.validateRow(row), box = $('#cMsg');
+    if (!v.ok) { box.innerHTML = '<div class="err">' + v.errs.map(esc).join('<br>') + '</div>'; return; }
+    if (CUSTOM.some(r => r.S + '|' + r.P === row.S + '|' + row.P)) { box.innerHTML = '<div class="err">Esa oración ya está en tu lista.</div>'; return; }
+    CUSTOM.push(row); store.set(KEY_U, CUSTOM); Core.setCustom(CUSTOM); render(); toast('Oración agregada');
+  },
+  delCustom(el) { CUSTOM.splice(+el.dataset.k, 1); store.set(KEY_U, CUSTOM); Core.setCustom(CUSTOM); render(); },
+  tReset() { confirmBox('¿Borrar el avance?', 'Se borrarán estrellas, insignias y racha de este dispositivo.', 'Borrar', () => { const name = P.name; P = defaultProgress(); P.name = name; saveP(); toast('Avance borrado'); }, 'warn'); }
+};
+app.addEventListener('click', e => { const el = e.target.closest('[data-act]'); if (el && actions[el.dataset.act]) actions[el.dataset.act](el, e); });
+app.addEventListener('submit', e => {
+  if (e.target.id === 'nameForm') {
+    e.preventDefault();
+    P = defaultProgress(); P.name = ($('#nameInput').value.trim() || 'Explorador'); saveP(); go('map');
+  }
+});
+app.addEventListener('change', e => {
+  const id = e.target.id;
+  if (state.screen !== 'teacher') return;
+  if (id === 'tIsland') { state.tIsland = +e.target.value; render(); }
+  else if (id === 'tOk') { C.msgs[state.tIsland].ok = e.target.value.trim(); saveC(); toast('Guardado'); }
+  else if (id === 'tBad') { C.msgs[state.tIsland].bad = e.target.value.trim(); saveC(); toast('Guardado'); }
+  else if (id === 'tCount') { C.examCount = +e.target.value; saveC(); toast('Guardado'); }
+  else if (id === 'tFb') { C.examFeedback = e.target.checked; saveC(); toast('Guardado'); }
+  else if (id === 'tUnlock') { C.unlockAll = e.target.checked; saveC(); toast('Guardado'); }
+  else if (id === 'tPin') {
+    const v = e.target.value.trim();
+    if (/^\d{4,8}$/.test(v)) { C.pin = v; saveC(); toast('Código guardado'); } else { e.target.value = C.pin; toast('Usa de 4 a 8 números'); }
+  }
+});
+
+/* ---------- Inicio ---------- */
+go('welcome');
+
+})();
+</script>
+</body>
+</html>
